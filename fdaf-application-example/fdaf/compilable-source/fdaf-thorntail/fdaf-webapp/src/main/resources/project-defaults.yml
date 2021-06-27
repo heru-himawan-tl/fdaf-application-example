@@ -1,0 +1,8 @@
+thorntail:
+  datasources:
+    data-sources:
+      MySqlFDAF:
+        driver-name: mysql
+        connection-url: jdbc:mysql://127.0.0.1:3306/fdaf?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC # Change it into your preference
+        user-name: root # Change it into your preference
+        password: password # Change it into your preference
