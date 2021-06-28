@@ -43,7 +43,31 @@ body
     font-size: 14px;
 }
 
-input[type="button"], input[type="submit"]
+html
+{
+  scrollbar-width: thin;
+  scrollbar-color: #000000 #BABDB6;
+}
+
+html::-webkit-scrollbar
+{
+  width: 6px !important;
+}
+
+html::-webkit-scrollbar-track
+{
+  background: #BABDB6;
+}
+
+html::-webkit-scrollbar-thumb
+{
+  background-color: #000000;
+  border-radius: 0px;
+  border: none;
+}
+
+input[type="button"],
+input[type="submit"]
 {
     -webkit-appearance: none !important;
     -moz-appearance: none !important;
@@ -52,8 +76,12 @@ input[type="button"], input[type="submit"]
 }
 
 select,
-.input_select, input[type=text], input[type=password], textarea,
-input[type="file"], input[type="number"]
+.input_select,
+input[type=text],
+input[type=password],
+textarea,
+input[type="file"],
+input[type="number"]
 {
     box-sizing: border-box;
     padding: 6px;
@@ -64,6 +92,7 @@ input[type="file"], input[type="number"]
     -ms-appearance: none !important;
     -o-appearance: none !important;
     appearance: none !important;
+    outline: none !important;
     background: #ffffff;
     font-size: 14px;
     color: #000000;
@@ -79,14 +108,18 @@ input[type="file"]
 .free_field_column select,
 .field_input_box select,
 .input_select,
-input[type=text], input[type=password], textarea,
+input[type=text],
+input[type=password],
+textarea,
 input[type=number]
 {
     width: 100%;
     /*max-width: 560px !important;*/
 }
 
-input[type=text], input[type=password], input[type=number]
+input[type=text],
+input[type=password],
+input[type=number]
 {
     padding: 7px;
 }
@@ -138,7 +171,8 @@ textarea:read-only
 
 }
 
-.field_input_box select, select
+.field_input_box select,
+select
 {
     background: url(../web-resources/ui-bg/selection-arrow.png);
     background-color: #ffffff;
@@ -201,6 +235,7 @@ input[type="checkbox"]
     max-width: 14px !important;
     text-align: center;
     font-size: 12px;
+    line-height: 12px;
     border-radius: 2px;
 }
 
@@ -211,7 +246,7 @@ input[type="checkbox"]:after
 
 input[type=checkbox]:checked:after
 {
-    content: "\2714";
+    content: "x";
     font-weight: bold;
 }
 
@@ -226,7 +261,7 @@ input[type=checkbox]:checked:after
 
 a
 {
-    color: #0052FF;
+    color: #0000ff;
     text-decoration: none;
 }
 
@@ -346,12 +381,32 @@ a:hover
     position: fixed;
     top: 0px;
     left: 0px;
+    bottom: 0px;
     overflow: auto;
-    scrollbar-width: none;
+    /*scrollbar-width: none;*/
     bottom: 0px;
     background: #000000;
     padding-top: 52px;
     z-index: 4;
+    scrollbar-width: thin;
+    scrollbar-color: #0000ff #2E3436;
+}
+
+.panel_menu_container::-webkit-scrollbar
+{
+  width: 6px !important;
+}
+
+.panel_menu_container::-webkit-scrollbar-track
+{
+  background: #2E3436;
+}
+
+.panel_menu_container::-webkit-scrollbar-thumb
+{
+  background-color: blue;
+  border-radius: 0px;
+  border: none;
 }
 
 .panel_menu_wrapper,
@@ -364,7 +419,7 @@ a:hover
 
 .panel_menu_container::-webkit-scrollbar
 {
-    width: 0px !important;
+    
 }
 
 .panel_menu_container a
@@ -375,13 +430,19 @@ a:hover
     padding: 8px;
     padding-left: 16px;
     padding-right: 16px;
+    border-top: 1px solid #2E3436;
     border-bottom: 1px solid #2E3436;
+    margin-bottom: -1px;
+    margin-top: -1px;
 }
 
 .panel_menu_container a:hover
 {
-    background: #0052FF;
+    border-top: 1px solid #0000ff;
+    background: #0000ff;
     color: #ffffff;
+    border-bottom: 1px solid #0000ff;
+    z-index: 5 !important;
 }
 
 .panel_menu_group
@@ -392,20 +453,20 @@ a:hover
     color: #ffffff;
     padding: 8px;
     padding-left: 16px;
-    border-bottom: 1px solid #2E3436;
+    /*border-bottom: 1px solid #2E3436; */
 }
 
 .panel_menu_bottom_gap
 {
     display: block;
-    height: 33%;
+    height: 75%;
 }
 
 /* TOP PANEL -------------------------------------------------------------- */
 
 .top_panel
 {
-    background: #0052FF;
+    background: #0000ff;
     padding: 8px;
     padding-left: 16px;
     padding-right: 16px;
@@ -435,6 +496,7 @@ a:hover
     display: table-cell;
     vertical-align: middle !important;
     white-space: nowrap;
+    height: 28px;
 }
 
 .top_panel_left_cell
@@ -542,7 +604,7 @@ a:hover
 .main_panel
 {
     padding: 16px;
-    padding-top: 62px;
+    padding-top: 64px;
     z-index: 3;
 }
 
@@ -677,7 +739,7 @@ a:hover
     box-sizing: border-box;
     padding: 8px;
     border: none;
-    background: #0052FF;
+    background: #0000ff;
     color: #ffffff;
 }
 
@@ -811,7 +873,7 @@ a:hover
 .program_heading_container
 {
     display: block;
-    background: #0052FF;
+    background: #0000ff;
 }
 
 .program_heading_box
@@ -839,6 +901,8 @@ a:hover
     display: -ms-flexbox;
     display: -webkit-flex;
     display: flex;
+    align-items: center;
+    justify-content: flex-end;
 }
 
 .program_heading_title
@@ -849,14 +913,11 @@ a:hover
 .program_heading_container
 {
     padding: 8px;
-    padding-top: 4px;
 }
 
-.program_heading_title,
-.program_heading_button_box
+.program_heading_title
 {
     padding: 4px;
-    padding-bottom: 0px;
 }
 
 .program_heading_title
@@ -1189,7 +1250,7 @@ a:hover
 .list_control_container
 {
     display: block;
-    background: #0052FF;
+    background: #0000ff;
     padding: 8px;
     color: #ffffff;
 }
@@ -1579,7 +1640,7 @@ a:hover
     padding: 8px;
     padding-top: 0px;
     position: relative;
-    background: #0052FF;
+    background: #0000ff;
 }
 
 .inline_messages_clear_button
@@ -1674,7 +1735,7 @@ a:hover
     bottom: 0px;
     right: 0px;
     left: 0px;
-    z-index: 100;
+    z-index: 100 !important;
     background: rgba(0, 0, 0, 0.4);
     align-items: center;
     justify-content: center;
@@ -1692,7 +1753,7 @@ a:hover
     padding: 16px;
     /*border-bottom: 2px solid #D9D9D9; */
     font-weight: bold;
-    background: #0052FF;
+    background: #0000ff;
     color: #ffffff;
 }
 
@@ -1910,7 +1971,7 @@ a:hover
     border: 0px;
     width: 100%;
     padding: 8px;
-    background: #0052FF;
+    background: #0000ff;
     color: #ffffff;
     border-radius: 2px;
     font-size: 14px;
@@ -1950,7 +2011,7 @@ a:hover
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #0052FF;
+    color: #0000ff;
 }
 
 .login_close_button_box
@@ -2363,7 +2424,7 @@ a:hover
     .login_info_flexbox .grouped_button_right:hover,
     .login_info_flexbox .common_button:hover
     {
-        background: #0052FF !important;
+        background: #0000ff !important;
         color: #ffffff !important;
     }
     
