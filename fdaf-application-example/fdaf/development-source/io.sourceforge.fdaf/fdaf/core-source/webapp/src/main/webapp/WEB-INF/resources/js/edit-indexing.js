@@ -26,41 +26,10 @@
  * OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE
  * USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-package fdaf.base;
 
-public abstract class ApplicationIdentifier {
-
-    protected static final String USER_SESSION_ID_FIELD_NAME = "FDAF";
-
-    protected ApplicationIdentifier() {
-        // NO-OP
-    }
-    
-    public String getApplicationCodeName() {
-        return "fdaf";
-    }
-    
-    public String getApplicationDescription() {
-        return "FDAF Application Example";
-    }
-    
-    public String getApplicationDevelCopyright() {
-        return "Copyright (C) Heru Himawan Tejo Laksono";
-    }
-    
-    public String getApplicationDevelHomePage() {
-        return "https://github.com/heru-himawan-tl/fdaf-application-example";
-    }
-    
-    public String getApplicationName() {
-        return "FDAF";
-    }
-    
-    public String getApplicationVersion() {
-        return "1.0";
-    }
-    
-    public String getApplicationCompiledDate() {
-        return "2021-07-02 at 18:15:26 WIB";
+function initEditIndexingWS(URI, serviceUUID, viewLayerName, editID) {
+    var editIndexingWS = new WebSocket(URI);
+    editIndexingWS.onopen = function (event) {
+        editIndexingWS.send(serviceUUID + " " + viewLayerName + " " + editID);
     }
 }
