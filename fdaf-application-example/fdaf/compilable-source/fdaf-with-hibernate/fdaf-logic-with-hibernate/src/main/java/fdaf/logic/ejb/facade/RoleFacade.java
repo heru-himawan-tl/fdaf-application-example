@@ -28,7 +28,6 @@
  */
 package fdaf.logic.ejb.facade;
 
-import fdaf.base.EditStateIndexingInterface;
 import fdaf.base.FacadeInterface;
 import fdaf.logic.base.AbstractFacade;
 import fdaf.logic.base.Specification;
@@ -45,9 +44,6 @@ public class RoleFacade extends AbstractFacade<RoleRepository, Role>
         implements Serializable {
 
     private static final long serialVersionUID = 1L;
-
-    @EJB(lookup = "java:global/fdaf/fdaf-logic/EditStateIndexing")
-    EditStateIndexingInterface editStateIndexing;
     
     @EJB
     private RoleRepository repository;
@@ -70,11 +66,6 @@ public class RoleFacade extends AbstractFacade<RoleRepository, Role>
 
     protected Role newEntity() {
         return new Role();
-    }
-    
-    @Override
-    protected EditStateIndexingInterface getEditStateIndexing() {
-        return editStateIndexing;
     }
 
     protected void setUuid() {

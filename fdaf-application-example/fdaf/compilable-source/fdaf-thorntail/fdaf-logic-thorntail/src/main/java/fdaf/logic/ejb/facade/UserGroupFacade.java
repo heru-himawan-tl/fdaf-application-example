@@ -28,7 +28,6 @@
  */
 package fdaf.logic.ejb.facade;
 
-import fdaf.base.EditStateIndexingInterface;
 import fdaf.base.FacadeInterface;
 import fdaf.logic.base.AbstractFacade;
 import fdaf.logic.base.Specification;
@@ -45,9 +44,6 @@ public class UserGroupFacade extends AbstractFacade<UserGroupRepository, UserGro
         implements Serializable {
 
     private static final long serialVersionUID = 1L;
-
-    @EJB(lookup = "java:global/fdaf/EditStateIndexing")
-    EditStateIndexingInterface editStateIndexing;
     
     @EJB
     private UserGroupRepository repository;
@@ -70,11 +66,6 @@ public class UserGroupFacade extends AbstractFacade<UserGroupRepository, UserGro
 
     protected UserGroup newEntity() {
         return new UserGroup();
-    }
-    
-    @Override
-    protected EditStateIndexingInterface getEditStateIndexing() {
-        return editStateIndexing;
     }
 
     protected void setUuid() {

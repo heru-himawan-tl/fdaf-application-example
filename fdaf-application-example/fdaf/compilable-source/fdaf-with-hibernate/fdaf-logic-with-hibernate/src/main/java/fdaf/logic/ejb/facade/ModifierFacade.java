@@ -28,7 +28,6 @@
  */
 package fdaf.logic.ejb.facade;
 
-import fdaf.base.EditStateIndexingInterface;
 import fdaf.base.FacadeInterface;
 import fdaf.logic.base.AbstractFacade;
 import fdaf.logic.base.Specification;
@@ -45,9 +44,6 @@ public class ModifierFacade extends AbstractFacade<ModifierRepository, Modifier>
         implements Serializable {
 
     private static final long serialVersionUID = 1L;
-
-    @EJB(lookup = "java:global/fdaf/fdaf-logic/EditStateIndexing")
-    EditStateIndexingInterface editStateIndexing;
     
     @EJB
     private ModifierRepository repository;
@@ -62,11 +58,6 @@ public class ModifierFacade extends AbstractFacade<ModifierRepository, Modifier>
 
     protected Modifier newEntity() {
         return new Modifier();
-    }
-    
-    @Override
-    protected EditStateIndexingInterface getEditStateIndexing() {
-        return editStateIndexing;
     }
 
     protected void setUuid() {
