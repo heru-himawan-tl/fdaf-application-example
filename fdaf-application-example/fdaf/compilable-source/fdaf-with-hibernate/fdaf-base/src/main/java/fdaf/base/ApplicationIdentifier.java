@@ -61,6 +61,6 @@ public abstract class ApplicationIdentifier {
     }
     
     public String getApplicationCompiledDate() {
-        return "2021-07-02 at 07:41:31 WIB";
+        return "2021-07-02 at 17:18:21 WIB";
     }
 }

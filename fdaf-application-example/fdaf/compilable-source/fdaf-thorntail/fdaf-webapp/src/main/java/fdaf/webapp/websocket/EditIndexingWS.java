@@ -17,50 +17,56 @@
  *
  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
  * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
- * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PAICULAR PURPOSE
  * ARE DISCLAIMED. IN NO EVENT SHALL THE REGENTS OR CONTRIBUTORS BE LIABLE FOR
  * ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
  * DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
  * SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
  * CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
- * OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE
+ * OR TO (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE
  * USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-package fdaf.base;
+package fdaf.webapp.websocket;
 
-public abstract class ApplicationIdentifier {
+import fdaf.webapp.base.AbstractWebSocket;
+import fdaf.webapp.bean.system.EditIndexingBean;
+import javax.inject.Inject;
+import javax.websocket.server.ServerEndpoint;
 
-    protected static final String USER_SESSION_ID_FIELD_NAME = "FDAF";
+@ServerEndpoint(value = "/edit-indexing")
+public class EditIndexingWS extends AbstractWebSocket {
 
-    protected ApplicationIdentifier() {
-        // NO-OP
+    @Inject
+    private EditIndexingBean editIndexing;
+    private String viewLayerName;
+    private Object dataID;
+    
+    public String getViewLayerName() {
+        return viewLayerName;
     }
     
-    public String getApplicationCodeName() {
-        return "fdaf";
+    public Object getDataID() {
+        return dataID;
+    }
+ 
+    @Override
+    protected void onOpenTask() {
+        editIndexing.addWebSocket(this);
+        editIndexing.runService();
     }
     
-    public String getApplicationDescription() {
-        return "FDAF Application Example";
+    @Override
+    protected void onMessageTask(String message) {
+        if (message != null && !message.trim().isEmpty()) {
+            String serviceUUID = message.replaceAll("^([a-zA-Z0-9\\-]+)([ ]+)([a-zA-Z]+)([ ]+)([0-9]+)$", "$1");
+            if (serviceUUID.equals(editIndexing.getServiceUUID())) {
+                viewLayerName = message.replaceAll("^([a-zA-Z0-9\\-]+)([ ]+)([a-zA-Z]+)([ ]+)([0-9]+)$", "$2");
+                dataID = (Object) Long.parseLong(message.replaceAll("^([a-zA-Z0-9\\-]+)([ ]+)([a-zA-Z]+)([ ]+)([0-9]+)$", "$1"));
+            }
+        }
     }
     
-    public String getApplicationDevelCopyright() {
-        return "Copyright (C) Heru Himawan Tejo Laksono";
-    }
-    
-    public String getApplicationDevelHomePage() {
-        return "https://github.com/heru-himawan-tl/fdaf-application-example";
-    }
-    
-    public String getApplicationName() {
-        return "FDAF";
-    }
-    
-    public String getApplicationVersion() {
-        return "1.0";
-    }
-    
-    public String getApplicationCompiledDate() {
-        return "2021-07-02 at 17:18:21 WIB";
+    @Override
+    protected void onCloseTask() {
     }
 }
