@@ -34,6 +34,7 @@ import fdaf.base.DatabaseServiceCheckerInterface;
 import fdaf.base.FacadeInterface;
 import fdaf.base.UserSessionManagerInterface;
 import fdaf.webapp.base.AbstractWebAppBean;
+import fdaf.webapp.bean.system.EditIndexingBean;
 import fdaf.webapp.bean.system.ListUpdaterBean;
 import java.io.Serializable;
 import javax.ejb.EJB;
@@ -76,6 +77,9 @@ public class UserGroupMemberWebAppBean extends AbstractWebAppBean implements Ser
     @EJB(lookup = "java:global/fdaf/fdaf-logic/CommonConfiguration")
     private CommonConfigurationInterface commonConfiguration;
     
+    @Inject
+    private EditIndexingBean editIndexing;
+    
     // UI_UPDATER_INJECT_HERE
     
     @Inject
@@ -83,6 +87,11 @@ public class UserGroupMemberWebAppBean extends AbstractWebAppBean implements Ser
 
     public UserGroupMemberWebAppBean() {
         // NO-OP
+    }
+    
+    @Override
+    public EditIndexingBean getEditIndexing() {
+        return editIndexing;
     }
     
     @Override
