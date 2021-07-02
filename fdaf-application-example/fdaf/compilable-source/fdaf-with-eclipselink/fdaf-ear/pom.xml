@@ -65,7 +65,7 @@ USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
                     <applicationName>fdaf</applicationName>
                     <displayName>fdaf</displayName>
                     <defaultLibBundleDir>lib</defaultLibBundleDir>
-                    <description>FDAF Application Example</description>
+                    <description>An application example shows you how to build efficiently a sample of Java EE application based FDAF framework. This is a quick overview of the most common FDAF starters, along with examples on how to use the FDAF framework API's and abstractions.</description>
                     <generateModuleId>false</generateModuleId>
                     <modules>
                         <ejbModule>

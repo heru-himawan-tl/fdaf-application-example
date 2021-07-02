@@ -36,7 +36,7 @@ USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     version="3.1">
 
     <display-name>FDAF</display-name>
-    <description>FDAF Application Example</description>
+    <description>An application example shows you how to build efficiently a sample of Java EE application based FDAF framework. This is a quick overview of the most common FDAF starters, along with examples on how to use the FDAF framework API's and abstractions.</description>
 
     <context-param>
         <param-name>javax.faces.FACELETS_SKIP_COMMENTS</param-name>

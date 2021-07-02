@@ -40,8 +40,16 @@ public abstract class ApplicationIdentifier {
         return "fdaf";
     }
     
-    public String getApplicationDescription() {
+    public String getApplicationName() {
+        return "FDAF";
+    }
+    
+    public String getApplicationLongName() {
         return "FDAF Application Example";
+    }
+    
+    public String getApplicationDescription() {
+        return "An application example shows you how to build efficiently a sample of Java EE application based FDAF framework. This is a quick overview of the most common FDAF starters, along with examples on how to use the FDAF framework API's and abstractions.";
     }
     
     public String getApplicationDevelCopyright() {
@@ -52,15 +60,11 @@ public abstract class ApplicationIdentifier {
         return "https://github.com/heru-himawan-tl/fdaf-application-example";
     }
     
-    public String getApplicationName() {
-        return "FDAF";
-    }
-    
     public String getApplicationVersion() {
         return "1.0";
     }
     
     public String getApplicationCompiledDate() {
-        return "2021-07-03 at 02:26:27 WIB";
+        return "2021-07-03 at 06:38:28 WIB";
     }
 }
