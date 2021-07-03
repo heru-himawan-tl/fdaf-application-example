@@ -852,7 +852,7 @@ a:hover
 .common_button_rtl[disabled],
 .common_button_std[disabled]
 {
-    color: #babdb6;
+    color: #eeeeec;
 }
 
 .grouped_button_left,
