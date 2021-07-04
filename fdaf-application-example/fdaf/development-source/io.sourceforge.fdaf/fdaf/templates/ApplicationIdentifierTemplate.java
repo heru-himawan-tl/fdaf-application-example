@@ -28,7 +28,7 @@
  */
 package fdaf.base;
 
-public abstract class ApplicationIdentifier {
+public abstract class ApplicationIdentifier extends FrameworkIdentifier {
 
     protected static final String USER_SESSION_ID_FIELD_NAME = "${fdaf.applicationName}";
 

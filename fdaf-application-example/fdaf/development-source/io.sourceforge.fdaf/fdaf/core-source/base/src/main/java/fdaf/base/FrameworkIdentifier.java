@@ -28,43 +28,33 @@
  */
 package fdaf.base;
 
-public abstract class ApplicationIdentifier extends FrameworkIdentifier {
+public abstract class FrameworkIdentifier {
 
-    protected static final String USER_SESSION_ID_FIELD_NAME = "FDAF";
-
-    protected ApplicationIdentifier() {
+    protected FrameworkIdentifier() {
         // NO-OP
     }
     
-    public String getApplicationCodeName() {
-        return "fdaf";
-    }
-    
-    public String getApplicationName() {
+    public String getFrameworkCodeName() {
         return "FDAF";
     }
     
-    public String getApplicationLongName() {
-        return "FDAF Application Example";
+    public String getFrameworkLongName() {
+        return "FDAF Framework";
     }
     
-    public String getApplicationDescription() {
-        return "An application example shows you how to build efficiently a sample of Java EE application based FDAF framework. This is a quick overview of the most common FDAF starters, along with examples on how to use the FDAF framework API's and abstractions.";
+    public String getFrameworkDescription() {
+        return "FDAF (or F.D.A.F) - a free, open-source, MVC framework for creating Java web applications based JSF (JavaServer Face), and also mainly designed for creating enterprise application, implementing the standard Java EE. It favors both convention and configuration, makes implementation and configuration to be more simple, and lets the programmer write less of codes.";
     }
     
-    public String getApplicationDevelCopyright() {
+    public String getFrameworkDevCopyright() {
         return "Copyright (C) Heru Himawan Tejo Laksono";
     }
     
-    public String getApplicationDevelHomePage() {
-        return "https://github.com/heru-himawan-tl/fdaf-application-example";
+    public String getFrameworkDevSite() {
+        return "https://github.com/heru-himawan-tl/fdaf";
     }
     
-    public String getApplicationVersion() {
+    public String getFrameworkVersion() {
         return "1.0";
-    }
-    
-    public String getApplicationCompiledDate() {
-        return "2021-07-04 at 08:03:51 WIB";
     }
 }

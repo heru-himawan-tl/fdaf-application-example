@@ -28,7 +28,7 @@
  */
 package fdaf.base;
 
-public abstract class ApplicationIdentifier {
+public abstract class ApplicationIdentifier extends FrameworkIdentifier {
 
     protected static final String USER_SESSION_ID_FIELD_NAME = "FDAF";
 
@@ -65,6 +65,6 @@ public abstract class ApplicationIdentifier {
     }
     
     public String getApplicationCompiledDate() {
-        return "2021-07-04 at 01:17:57 WIB";
+        return "2021-07-04 at 08:03:51 WIB";
     }
 }
