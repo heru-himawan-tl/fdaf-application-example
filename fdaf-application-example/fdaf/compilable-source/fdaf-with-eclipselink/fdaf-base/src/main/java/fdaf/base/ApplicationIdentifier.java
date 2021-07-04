@@ -65,6 +65,6 @@ public abstract class ApplicationIdentifier extends FrameworkIdentifier {
     }
     
     public String getApplicationCompiledDate() {
-        return "2021-07-04 at 15:20:01 WIB";
+        return "2021-07-04 at 16:05:59 WIB";
     }
 }
