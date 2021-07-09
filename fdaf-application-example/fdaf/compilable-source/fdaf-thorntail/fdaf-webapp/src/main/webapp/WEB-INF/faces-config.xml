@@ -29,63 +29,11 @@ OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE
 USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 -->
-<faces-config version="2.3" xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+<faces-config version="2.3" xmlns="http://xmlns.jcp.org/xml/ns/javaee" 
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee
             http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_3.xsd">
-
-    <application>
-
-        <resource-bundle>
-            <!-- This resource bundle will be used by fdaf.webapp.base.AbstractWebAppBean -->
-            <base-name>fdaf.webapp.rc.messages.message</base-name>
-            <var>defaultMessage</var>
-        </resource-bundle>
-        
-        <resource-bundle>
-            <!-- This resource bundle will be used by fdaf.webapp.base.AbstractWebAppBean -->
-            <base-name>fdaf.webapp.rc.messages.custom_message</base-name>
-            <var>customMessage</var>
-        </resource-bundle>
-        
-        <resource-bundle>
-            <!-- This resource bundle will be used by fdaf.webapp.base.AbstractWebAppBean -->
-            <base-name>fdaf.webapp.rc.messages.custom_callback_message</base-name>
-            <var>customCallbackMessage</var>
-        </resource-bundle>
-
-        <resource-bundle>
-            <!-- This resource bundle will be used by fdaf.webapp.base.AbstractWebAppBean -->
-            <base-name>fdaf.webapp.rc.messages.callback_message</base-name>
-            <var>callbackMessage</var>
-        </resource-bundle>
-
-        <resource-bundle>
-            <!-- This resource bundle will be used directly by JSF -->
-            <base-name>fdaf.webapp.rc.messages.label</base-name>
-            <var>label</var>
-        </resource-bundle>
-        
-        <resource-bundle>
-            <!-- This resource bundle will be used directly by JSF -->
-            <base-name>fdaf.webapp.rc.messages.custom_label</base-name>
-            <var>clabel</var>
-        </resource-bundle>
-
-        <resource-bundle>
-            <!-- This resource bundle will be used directly by JSF -->
-            <base-name>fdaf.erc.label</base-name>
-            <var>elabel</var>
-        </resource-bundle>
-
-        <locale-config>
-            <default-locale>en_US</default-locale>
-        </locale-config>
-
-    </application>
-    
     <factory>
         <exception-handler-factory>fdaf.webapp.handler.WebAppExceptionHandlerFactory</exception-handler-factory>
     </factory>
-
 </faces-config>
