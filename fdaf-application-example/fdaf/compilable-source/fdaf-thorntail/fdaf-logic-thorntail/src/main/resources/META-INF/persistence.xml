@@ -34,7 +34,7 @@ USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence
             http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
     <persistence-unit name="fdaf.jpa.unit" transaction-type="JTA">
-        <jta-data-source>java:jboss/datasources/MySqlFDAF</jta-data-source>
+        <jta-data-source>java:jboss/datasources/MySqlFDAF</jta-data-source>java:jboss/datasources/
         <properties>
             <property name="javax.persistence.schema-generation.create-script-source" value="META-INF/sql/create-tables.sql" />
             <property name="javax.persistence.schema-generation.database.action" value="create"/>
