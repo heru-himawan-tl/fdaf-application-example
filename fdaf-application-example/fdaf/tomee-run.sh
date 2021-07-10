@@ -26,6 +26,9 @@ function run() {
     ) &
 
     rm -rfv *tomee*/logs/*
+    
+    reset
+    
     ./*tomee*/bin/startup.sh
     tail -f *tomee*/logs/catalina.out
 }
