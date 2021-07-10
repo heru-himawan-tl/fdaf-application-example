@@ -9,21 +9,25 @@
 
 reset
 
-(
-    sleep 1
-    while [ true ];
-    do
-        test_run=$(ps aux | awk '/tail .*tomee.*/' | grep 'catalina.out')
-        if [ "$test_run" = "" ]; then
-            break
-        fi
-        sleep 1
-    done
-    sleep 1
-    ./*tomee*/bin/shutdown.sh
-    exit
-) &
+if ./compile-test.sh with-eclipselink --tomee-test; then
 
-rm -rfv *tomee*/logs/*
-./*tomee*/bin/startup.sh
-tail -f *tomee*/logs/catalina.out
+    (
+        sleep 1
+        while [ true ];
+        do
+            test_run=$(ps aux | awk '/tail .*tomee.*/' | grep 'catalina.out')
+            if [ "$test_run" = "" ]; then
+                break
+            fi
+            sleep 1
+        done
+        sleep 1
+        ./*tomee*/bin/shutdown.sh
+        exit
+    ) &
+
+    rm -rfv *tomee*/logs/*
+    ./*tomee*/bin/startup.sh
+    tail -f *tomee*/logs/catalina.out
+    
+fi
