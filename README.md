@@ -79,8 +79,9 @@ To compile and run, just call the `tomee-run.sh` script from a terminal console.
 
 #### Compiling
 
-To test this FDAF application example under WildFly, call `compile-test.sh`
-script with argument `with-hibernate`:
+To test this FDAF application example under WildFly, the development-source
+must be pre-compiled by the call of `compile-test.sh` script with argument
+`with-hibernate`:
 
     ./compile-test.sh with-hibernate
     
@@ -102,7 +103,7 @@ deployment.
 a WAR archive of FDAF application example for a managed web-application
 deployment.
 
-#### Adding MySQL Connector/J Module
+#### Required: Adding MySQL Connector/J Module On WildFly
 
 To run this FDAF application example under WildFly, a WildFly server must
 have MySQL Connector/J module resides in
@@ -120,6 +121,9 @@ configuration e.g:
     </module>
     
 #### WildFly Data Source & Database Driver Configuration
+
+Current WildFly installation must have MySQL data source and MySQL driver
+configuration in `standalone.xml` looks like e.g.:
 
     <subsystem xmlns="urn:jboss:domain:datasources:6.0">
         <datasources>
@@ -147,3 +151,9 @@ configuration e.g:
             </drivers>
         </datasources>
     </subsystem>
+    
+#### Runtime Naming Convention Of Application Deployment Under WildFly
+
+In order the web-application part to be working properly under WildFly, the
+correct runtime name must be applied to EAR part of this FDAF application
+example deployment, as `fdaf.ear`.
