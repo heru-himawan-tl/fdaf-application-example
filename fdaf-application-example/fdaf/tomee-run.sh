@@ -9,8 +9,7 @@
 
 reset
 
-if ./compile-test.sh with-eclipselink --tomee-test; then
-
+function run() {
     (
         sleep 1
         while [ true ];
@@ -29,5 +28,12 @@ if ./compile-test.sh with-eclipselink --tomee-test; then
     rm -rfv *tomee*/logs/*
     ./*tomee*/bin/startup.sh
     tail -f *tomee*/logs/catalina.out
-    
+}
+
+if [ "$1" = "--compile-test" ]; then 
+    if ./compile-test.sh with-eclipselink --tomee-test; then
+        run    
+    fi
+else
+    run
 fi

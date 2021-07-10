@@ -40,23 +40,6 @@ transaction manager for TomEE as shown by the example below:
             Password xxxxxxxxx
             JtaManaged true
         </Resource>
-        
-        <TransactionManager id="myTransactionManager" type="TransactionManager">
-            adler32Checksum = true
-            bufferSizeKb = 32
-            checksumEnabled = true
-            defaultTransactionTimeout = 10 minutes
-            flushSleepTime = 50 Milliseconds
-            logFileDir = txlog
-            logFileExt = log
-            logFileName = howl
-            maxBlocksPerFile = -1
-            maxBuffers = 0
-            maxLogFiles = 2
-            minBuffers = 4
-            threadsWaitingForceThreshold = -1
-            txRecovery = false
-        </TransactionManager>
     </tomee>
     
 The above data source configuration example requires a MySQL Connector/J JAR
