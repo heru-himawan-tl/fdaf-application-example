@@ -63,6 +63,12 @@ The above data source configuration example requires a MySQL Connector/J JAR
 present in `$catalina_home/lib` directory. Download a MySQL Connector/J from
 the [official MySQL development download page](https://dev.mysql.com/downloads/connector/j/),
 and put it inside `$catalina_home/lib` directory.
+
+Notice:  
+The data source ID must be identical with that defined in
+`./fdaf-application-example/fdaf/development-source/io.sourceforge.fdaf/fdaf/develop.properties`:
+
+    fdaf.dataSourceName=MySqlFDAF
     
 #### Specific Required TomEE System Properties
 
@@ -151,6 +157,12 @@ configuration in `standalone.xml` looks like e.g.:
             </drivers>
         </datasources>
     </subsystem>
+    
+Notice:  
+The data source JNDI name must be identical with that defined in
+`./fdaf-application-example/fdaf/development-source/io.sourceforge.fdaf/fdaf/develop.properties`:
+
+    fdaf.dataSourceName=MySqlFDAF
     
 #### Runtime Naming Convention Of Application Deployment Under WildFly
 
