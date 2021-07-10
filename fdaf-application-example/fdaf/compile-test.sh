@@ -22,8 +22,11 @@ if mvn clean compile -P initialize-compilable; then
         fi
     else
         cd $CWD
-        exit
+        exit 1
     fi
+else
+    cd $CWD
+    exit 1
 fi
 
 if [ "$2" = "--tomee-test" ]; then
@@ -34,3 +37,5 @@ fi
 cd $CWD
 
 date > last-update-ts
+
+exit 0

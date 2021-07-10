@@ -1,0 +1,29 @@
+#!/bin/bash
+
+# Script to test this FDAF application example using Apache TomEE.
+# You must have TomEE installation inside directory where the FDAF
+# application `development-source` directory resides and in which
+# this script also resided.
+# TomEE application directory name must contain `tomee` word, e.g:
+# `apache-tomee-plume-8.0.6`
+
+reset
+
+(
+    sleep 1
+    while [ true ];
+    do
+        test_run=$(ps aux | awk '/tail .*tomee.*/' | grep 'catalina.out')
+        if [ "$test_run" = "" ]; then
+            break
+        fi
+        sleep 1
+    done
+    sleep 1
+    ./*tomee*/bin/shutdown.sh
+    exit
+) &
+
+rm -rfv *tomee*/logs/*
+./*tomee*/bin/startup.sh
+tail -f *tomee*/logs/catalina.out
