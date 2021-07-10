@@ -14,22 +14,22 @@ This FDAF application example has tested under these application servers:
 
 Since this experiment uses shell script, this guide assumes that you are with
 a GNU/Linux-based operating system that already have a MySQL server or a
-MariaDB server running under it, an OpenJDK 8 or newer installed within, and
-Apache Maven version 3.6 or later installed within.
+MariaDB server installed and running on it, an OpenJDK 8 or newer installed on
+it, and Apache Maven version 3.6 or later installed on it.
 
 ### Compile For & Run Under Apache TomEE Plume/Plus
 
 An Apache TomEE Plume or Plus version 8.0.6 or higher is required for this
-test. Download it, extract it, and put the TomEE installation directory
-inside `./fdaf-application-example/fdaf/` directory, for example you will
-get the TomEE installation directory (or a `$catalina_home`) will be alike:
+test. Download and extract it inside `./fdaf-application-example/fdaf/`
+directory, so that you will, for example, get the TomEE installation
+directory (or a `$catalina_home`) will be alike as:
 `./fdaf-application-example/fdaf/apache-tomee-plume-8.0.6/`.
 
 #### TomEE Data Source & Transaction Manager Configuration
 
-To make this FDAF application example running correctly, you must configure
-a data source and a transaction manager for TomEE as shown by the example
-below:
+To make this FDAF application example running correctly under Apache TomEE
+Plume/Plus 8.0.6 (or higher), you must configure a data source and a
+transaction manager for TomEE as shown by the example below:
 
     <?xml version="1.0" encoding="UTF-8"?>
     <tomee>
@@ -62,7 +62,7 @@ below:
 The above data source configuration example requires a MySQL Connector/J JAR
 present in `$catalina_home/lib` directory. Download a MySQL Connector/J from
 the [official MySQL development download page](https://dev.mysql.com/downloads/connector/j/),
-extract it, and put it inside `$catalina_home/lib` directory.
+and put it inside `$catalina_home/lib` directory.
     
 #### Specific Required TomEE System Properties
 
