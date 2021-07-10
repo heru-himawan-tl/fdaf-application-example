@@ -141,7 +141,7 @@ configuration in `standalone.xml` looks like e.g.:
                 <driver>mysql</driver>
                 <security>
                     <user-name>root</user-name>
-                    <password>debian</password>
+                    <password>xxxxxxxxx</password>
                 </security>
                 <validation>
                     <valid-connection-checker class-name="org.jboss.jca.adapters.jdbc.extensions.mysql.MySQLValidConnectionChecker"/>
