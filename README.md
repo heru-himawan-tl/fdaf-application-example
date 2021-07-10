@@ -5,7 +5,7 @@ EE application based [FDAF framework](https://github.com/heru-himawan-tl/fdaf).
 This is a quick overview of the most common FDAF starters, along with examples
 on how to use the FDAF framework API's and abstractions.
 
-This FDAF application example has tested under:
+This FDAF application example has tested under these application servers:
 
 - [WildFly V. 24 Final](https://www.wildfly.org/)   
 - [Apache Tomee Plume/Plus V. 8.0.6](https://tomee.apache.org/)  
