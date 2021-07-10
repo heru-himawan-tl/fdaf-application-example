@@ -79,7 +79,9 @@ Specific TomEE system properties must be set within the `system.properties`:
 
 #### Compile & Run
 
-To compile and run, just call the `tomee-run.sh` script from a terminal console.
+To compile and run, just call the `tomee-run.sh` script from a terminal
+console. The web application can be accessed from a browser program such as
+Firefox by URL: `http://localhost:8080/fdaf-webapp/`
 
 ### Compile To Test Under WildFly Application Server
 
