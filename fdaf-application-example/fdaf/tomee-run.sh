@@ -11,7 +11,14 @@ reset
 
 function run() {
     (
-        sleep 1
+        test_run=
+        while [ true ]; do
+            test_run=$(ps aux | awk '/tail .*tomee.*/' | grep 'catalina.out')
+            if [ "$test_run" != "" ]; then
+                break;
+            fi
+            sleep 1
+        done
         while [ true ];
         do
             test_run=$(ps aux | awk '/tail .*tomee.*/' | grep 'catalina.out')
