@@ -34,6 +34,7 @@ cd $CWD
 date > last-update-ts
 
 if [ "$2" = "--tomee-test" ]; then
+    rm -rfv *tomee*/webapps/fdaf*
     cp -afv compilable-source/$BASE-with-eclipselink/build/$BASE.ear *tomee*/webapps
     cp -afv compilable-source/$BASE-with-eclipselink/build/$BASE-webapp.war *tomee*/webapps
 fi

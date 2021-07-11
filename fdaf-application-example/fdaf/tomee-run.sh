@@ -32,7 +32,9 @@ function run() {
         exit
     ) &
 
+    rm -rfv *tomee*/temp/*
     rm -rfv *tomee*/logs/*
+    rm -rfv *tomee*/works/*
     
     reset
     
