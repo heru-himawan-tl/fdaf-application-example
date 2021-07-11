@@ -29,13 +29,13 @@ else
     exit 1
 fi
 
+cd $CWD
+
+date > last-update-ts
+
 if [ "$2" = "--tomee-test" ]; then
     cp -afv compilable-source/$BASE-with-eclipselink/build/$BASE.ear *tomee*/webapps
     cp -afv compilable-source/$BASE-with-eclipselink/build/$BASE-webapp.war *tomee*/webapps
 fi
-
-cd $CWD
-
-date > last-update-ts
 
 exit 0
