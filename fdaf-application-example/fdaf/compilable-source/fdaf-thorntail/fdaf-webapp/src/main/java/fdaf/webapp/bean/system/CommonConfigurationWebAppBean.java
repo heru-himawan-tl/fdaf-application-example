@@ -88,7 +88,7 @@ public class CommonConfigurationWebAppBean extends AbstractBaseWebAppBean implem
     @EJB(lookup = "java:global/fdaf/UserSessionManagerFacade")
     private UserSessionManagerInterface userSessionManager;
     
-    @EJB(lookup = "java:global/fdaf/CommonConfiguration")
+    @EJB(lookup = "java:global/fdaf/CommonConfigurationService")
     private CommonConfigurationInterface config;
     
     private String masterPasswordFileAddr;

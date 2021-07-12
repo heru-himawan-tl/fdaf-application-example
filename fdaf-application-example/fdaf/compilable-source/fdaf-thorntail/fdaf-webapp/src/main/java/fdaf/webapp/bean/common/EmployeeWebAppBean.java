@@ -74,7 +74,7 @@ public class EmployeeWebAppBean extends AbstractWebAppBean implements Serializab
     @EJB(lookup = "java:global/fdaf/DatabaseServiceCheckerFacade")
     private DatabaseServiceCheckerInterface dbServiceChecker;
     
-    @EJB(lookup = "java:global/fdaf/CommonConfiguration")
+    @EJB(lookup = "java:global/fdaf/CommonConfigurationService")
     private CommonConfigurationInterface commonConfiguration;
     
     @Inject

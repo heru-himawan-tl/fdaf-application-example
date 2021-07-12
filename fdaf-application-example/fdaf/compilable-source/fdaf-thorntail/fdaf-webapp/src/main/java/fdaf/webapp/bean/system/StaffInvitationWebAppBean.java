@@ -59,7 +59,7 @@ public class StaffInvitationWebAppBean extends AbstractWebAppBean implements Ser
     @EJB(lookup = "java:global/fdaf/StaffInvitationFacade")
     private StaffInvitationInterface facade;
     
-    @EJB(lookup = "java:global/fdaf/Mailer")
+    @EJB(lookup = "java:global/fdaf/MailerService")
     private MailerInterface mailer;
     
     @EJB(lookup = "java:global/fdaf/AdministratorAccountCheckerFacade")
@@ -71,7 +71,7 @@ public class StaffInvitationWebAppBean extends AbstractWebAppBean implements Ser
     @EJB(lookup = "java:global/fdaf/DatabaseServiceCheckerFacade")
     private DatabaseServiceCheckerInterface dbServiceChecker;
     
-    @EJB(lookup = "java:global/fdaf/CommonConfiguration")
+    @EJB(lookup = "java:global/fdaf/CommonConfigurationService")
     private CommonConfigurationInterface commonConfiguration;
     
     private boolean mailerFailure;

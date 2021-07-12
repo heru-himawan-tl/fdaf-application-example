@@ -56,7 +56,7 @@ public class UserSessionManagerWebAppBean extends AbstractWebAppBean implements 
     @EJB(lookup = "java:global/fdaf/fdaf-logic/UserSessionManagerFacade")
     private UserSessionManagerInterface userSessionManager;
     
-    @EJB(lookup = "java:global/fdaf/fdaf-logic/CommonConfiguration")
+    @EJB(lookup = "java:global/fdaf/fdaf-logic/CommonConfigurationService")
     private CommonConfigurationInterface commonConfiguration;
     
     private boolean inProcessLogin;

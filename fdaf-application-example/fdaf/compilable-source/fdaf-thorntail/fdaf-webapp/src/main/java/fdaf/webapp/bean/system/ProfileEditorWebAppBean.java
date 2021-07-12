@@ -61,7 +61,7 @@ public class ProfileEditorWebAppBean extends AbstractWebAppBean implements Seria
     @EJB(lookup = "java:global/fdaf/DatabaseServiceCheckerFacade")
     private DatabaseServiceCheckerInterface dbServiceChecker;
 
-    @EJB(lookup = "java:global/fdaf/CommonConfiguration")
+    @EJB(lookup = "java:global/fdaf/CommonConfigurationService")
     private CommonConfigurationInterface commonConfiguration;
 
     private boolean initialized;

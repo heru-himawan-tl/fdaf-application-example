@@ -54,7 +54,7 @@ public class AdmWebAppBean extends AbstractBaseWebAppBean implements Serializabl
     @EJB(lookup = "java:global/fdaf/fdaf-logic/DatabaseServiceCheckerFacade")
     private DatabaseServiceCheckerInterface dbServiceChecker;
     
-    @EJB(lookup = "java:global/fdaf/fdaf-logic/CommonConfiguration")
+    @EJB(lookup = "java:global/fdaf/fdaf-logic/CommonConfigurationService")
     private CommonConfigurationInterface commonConfiguration;
 
     public AdmWebAppBean() {

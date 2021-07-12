@@ -47,7 +47,7 @@ public class ExpirationPageWebAppBean extends AbstractDummyWebAppBean implements
 
     private static final long serialVersionUID = 1L;
     
-    @EJB(lookup = "java:global/fdaf/fdaf-logic/CommonConfiguration")
+    @EJB(lookup = "java:global/fdaf/fdaf-logic/CommonConfigurationService")
     private CommonConfigurationInterface commonConfiguration;
     
     private String referer;

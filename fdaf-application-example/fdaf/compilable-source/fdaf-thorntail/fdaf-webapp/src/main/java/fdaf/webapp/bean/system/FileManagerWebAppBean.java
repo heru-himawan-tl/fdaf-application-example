@@ -56,7 +56,7 @@ public class FileManagerWebAppBean extends AbstractBaseWebAppBean implements Ser
     @EJB(lookup = "java:global/fdaf/UserSessionManagerFacade")
     private UserSessionManagerInterface userSessionManager;
     
-    @EJB(lookup = "java:global/fdaf/CommonConfiguration")
+    @EJB(lookup = "java:global/fdaf/CommonConfigurationService")
     private CommonConfigurationInterface commonConfiguration;
     
     @EJB(lookup = "java:global/fdaf/DatabaseServiceCheckerFacade")

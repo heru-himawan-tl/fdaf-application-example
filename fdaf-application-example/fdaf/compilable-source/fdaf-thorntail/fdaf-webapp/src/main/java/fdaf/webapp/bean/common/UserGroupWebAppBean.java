@@ -74,7 +74,7 @@ public class UserGroupWebAppBean extends AbstractWebAppBean implements Serializa
     @EJB(lookup = "java:global/fdaf/DatabaseServiceCheckerFacade")
     private DatabaseServiceCheckerInterface dbServiceChecker;
     
-    @EJB(lookup = "java:global/fdaf/CommonConfiguration")
+    @EJB(lookup = "java:global/fdaf/CommonConfigurationService")
     private CommonConfigurationInterface commonConfiguration;
     
     @Inject

@@ -42,7 +42,6 @@ public class UserSelectOption extends AbstractSelectOptionBean implements Serial
     private static final long serialVersionUID = 1L;
     
     @EJB(lookup = "java:global/fdaf/fdaf-logic/UserMapFacade")
-    
     private MapInterface mapInterface;
     
     public UserSelectOption() {

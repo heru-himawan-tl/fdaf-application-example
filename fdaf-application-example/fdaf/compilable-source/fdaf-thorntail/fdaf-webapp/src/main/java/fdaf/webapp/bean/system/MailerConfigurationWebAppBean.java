@@ -86,10 +86,10 @@ public class MailerConfigurationWebAppBean extends AbstractBaseWebAppBean implem
     @EJB(lookup = "java:global/fdaf/UserSessionManagerFacade")
     private UserSessionManagerInterface userSessionManager;
     
-    @EJB(lookup = "java:global/fdaf/Mailer")
+    @EJB(lookup = "java:global/fdaf/MailerService")
     private MailerInterface mailer;
     
-    @EJB(lookup = "java:global/fdaf/CommonConfiguration")
+    @EJB(lookup = "java:global/fdaf/CommonConfigurationService")
     private CommonConfigurationInterface commonConfiguration;
     
     private String masterPasswordFileAddr;

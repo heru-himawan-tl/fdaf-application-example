@@ -55,7 +55,7 @@ public class IndexPageWebAppBean extends AbstractBaseWebAppBean implements Seria
     @EJB(lookup = "java:global/fdaf/UserSessionManagerFacade")
     private UserSessionManagerInterface userSessionManager;
     
-    @EJB(lookup = "java:global/fdaf/CommonConfiguration")
+    @EJB(lookup = "java:global/fdaf/CommonConfigurationService")
     private CommonConfigurationInterface commonConfiguration;
     
     @EJB(lookup = "java:global/fdaf/DatabaseServiceCheckerFacade")
