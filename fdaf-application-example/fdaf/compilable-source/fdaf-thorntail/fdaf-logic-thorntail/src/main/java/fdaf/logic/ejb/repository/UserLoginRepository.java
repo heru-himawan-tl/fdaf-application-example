@@ -42,7 +42,7 @@ import javax.ejb.StatefulTimeout;
 
 @StatefulTimeout(value = -1)
 @TransactionAttribute(TransactionAttributeType.MANDATORY)
-@Stateful
+@Stateful(passivationCapable = false)
 public class UserLoginRepository extends AbstractRepository<UserLogin> implements Serializable {
 
     private static final long serialVersionUID = 1L;
