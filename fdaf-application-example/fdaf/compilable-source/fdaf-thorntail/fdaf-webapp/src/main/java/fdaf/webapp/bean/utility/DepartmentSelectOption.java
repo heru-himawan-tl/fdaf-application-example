@@ -38,7 +38,9 @@ import javax.inject.Named;
 @SessionScoped
 @Named
 public class DepartmentSelectOption extends AbstractSelectOptionBean implements Serializable {
+
     private static final long serialVersionUID = 1L;
+    
     @EJB(lookup = "java:global/fdaf/DepartmentMapFacade")
     private MapInterface mapInterface;
     

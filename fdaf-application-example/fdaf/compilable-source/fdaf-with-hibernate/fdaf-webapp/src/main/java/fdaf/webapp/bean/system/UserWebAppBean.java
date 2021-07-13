@@ -62,12 +62,9 @@ public class UserWebAppBean extends AbstractWebAppBean implements Serializable {
     
     @EJB(lookup = "java:global/fdaf/fdaf-logic/CommonConfigurationService")
     private CommonConfigurationInterface commonConfiguration;
-    
-    private boolean inlineUpdateMode;
-    private Object extEntity;
 
     public UserWebAppBean() {
-        // NO-OP
+       // NO-OP
     }
 
     protected AdministratorAccountCheckerInterface getAdministratorAccountChecker() {
