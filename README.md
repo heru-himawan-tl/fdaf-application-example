@@ -8,7 +8,11 @@ on how to use the FDAF framework API's and abstractions.
 This FDAF application example has tested under these application servers:
 
 - [WildFly V. 24 Final](https://www.wildfly.org/)   
-- [Apache Tomee Plume/Plus V. 8.0.6](https://tomee.apache.org/)  
+- [Apache Tomee Plume V. 8.0.6](https://tomee.apache.org/)  
+
+Notice:  
+Due [Apache Tomee Plus](https://tomee.apache.org/) applies OpenJPA
+and MyFaces, it prevents FDAF application for working properly.
 
 ## HOWTO Compile & Run
 
@@ -17,9 +21,9 @@ a GNU/Linux-based operating system that already have a MySQL server or a
 MariaDB server installed and running on it, an OpenJDK 8 or newer installed on
 it, and Apache Maven version 3.6 or later installed on it.
 
-### Compile For & Run Under Apache TomEE Plume/Plus
+### Compile For & Run Under Apache TomEE Plume
 
-An Apache TomEE Plume or Plus version 8.0.6 or higher is required for this
+An Apache TomEE Plume version 8.0.6 or higher is required for this
 test. Download and extract it inside `./fdaf-application-example/fdaf/`
 directory, so that you will, for example, get the TomEE installation
 directory (or a `$CATALINA_HOME`) will be alike as:
@@ -59,6 +63,10 @@ Specific TomEE system properties must be set within the `system.properties`:
 
     org.apache.el.parser.SKIP_IDENTIFIER_CHECK = true
     tomee.serialization.class.whitelist = *
+    
+Disable or commented the serialization class blacklist:
+
+    # tomee.serialization.class.blacklist = *
 
 #### Compile & Run
 
