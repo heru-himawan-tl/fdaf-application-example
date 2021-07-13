@@ -43,19 +43,20 @@ import javax.ejb.StatefulTimeout;
 @StatefulTimeout(value = -1)
 @Remote({FacadeInterface.class})
 @Stateful
-public class UserFacade extends AbstractFacade<UserRepository, User> implements Serializable {
+public class UserFacade extends AbstractFacade<UserRepository, User>
+        implements Serializable {
 
     private static final long serialVersionUID = 1L;
     
     @EJB
     private UserRepository repository;
-    
-    @EJB(lookup = "java:global/fdaf/UserUpdateCallback")
-    fdaf.logic.base.UpdateCallbackInterface<UserRepository, User> updateCallbackBean;
 
     public UserFacade() {
         super(User.class);
     }
+
+    @EJB(lookup = "java:global/fdaf/UserUpdateCallback")
+    fdaf.logic.base.UpdateCallbackInterface<UserRepository, User> updateCallbackBean;
 
     @Override
     protected void presetUpdateCallback() {
