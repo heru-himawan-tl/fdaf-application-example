@@ -74,8 +74,11 @@ To compile and run, just call the `tomee-run.sh` script from a terminal
 console, apply `--compile-test-multi-tiers` or `--compile-test-single-tiear`
 option if not already compiled:
 
+- Compile and run as multi-tiers architecture:
+
     ./tomee-run.sh --compile-test-multi-tiers  
 
+- Compile and run as single architecture:
 
     ./tomee-run.sh --compile-test-single-tier
     
@@ -87,8 +90,11 @@ without an option:
     
 or with `--multi-tiers` or `--single-tier` option:
 
+- Run as multi-tiers architecture:
+
     ./tomee-run.sh --multi-tiers  
 
+- Run as single-tier architecture:
 
     ./tomee-run.sh --single-tiear
 
