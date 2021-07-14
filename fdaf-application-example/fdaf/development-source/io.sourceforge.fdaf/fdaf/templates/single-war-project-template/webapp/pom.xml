@@ -36,16 +36,16 @@ USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     <modelVersion>4.0.0</modelVersion>
     
     <parent>
-        <groupId>io.sourceforge.fdaf</groupId>
-        <artifactId>fdaf-with-eclipselink</artifactId>
-        <version>1.0</version>
+        <groupId>${fdaf.applicationGroupId}</groupId>
+        <artifactId>${fdaf.applicationCodeName}-with-__JPA_PROVIDER__</artifactId>
+        <version>${fdaf.applicationVersion}</version>
     </parent>
    
-    <groupId>io.sourceforge.fdaf</groupId>
-    <artifactId>fdaf-webapp</artifactId>
-    <version>1.0</version>
+    <groupId>${fdaf.applicationGroupId}</groupId>
+    <artifactId>${fdaf.applicationCodeName}-webapp</artifactId>
+    <version>${fdaf.applicationVersion}</version>
     <packaging>war</packaging>
-    <name>FDAF Web Application</name>
+    <name>${fdaf.applicationName} Web Application</name>
     
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -56,7 +56,7 @@ USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     
     <build>
         <directory>${java.io.tmpdir}${file.separator}${project.groupId}${file.separator}${project.parent.artifactId}${file.separator}${project.artifactId}</directory>
-        <finalName>fdaf-webapp</finalName>
+        <finalName>${fdaf.applicationCodeName}-webapp</finalName>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -73,8 +73,8 @@ USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
                 <version>1.8</version>
                 <configuration>
                     <target>
-                        <copy tofile="${finalBuildDir}${file.separator}fdaf-webapp.war"
-                                file="${java.io.tmpdir}${file.separator}${project.groupId}${file.separator}${project.parent.artifactId}${file.separator}${project.artifactId}${file.separator}fdaf-webapp.war" />
+                        <copy tofile="${finalBuildDir}${file.separator}${fdaf.applicationCodeName}-webapp.war"
+                                file="${java.io.tmpdir}${file.separator}${project.groupId}${file.separator}${project.parent.artifactId}${file.separator}${project.artifactId}${file.separator}${fdaf.applicationCodeName}-webapp.war" />
                     </target>
                 </configuration>
                 <executions>
@@ -91,87 +91,26 @@ USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     
     <dependencies>
         <dependency>
-            <groupId>io.sourceforge.fdaf</groupId>
-            <artifactId>fdaf-base</artifactId>
-            <version>1.0</version>
+            <groupId>${fdaf.applicationGroupId}</groupId>
+            <artifactId>${fdaf.applicationCodeName}-base</artifactId>
+            <version>${fdaf.applicationVersion}</version>
         </dependency>
         <dependency>
-            <groupId>io.sourceforge.fdaf</groupId>
-            <artifactId>fdaf-erc</artifactId>
-            <version>1.0</version>
+            <groupId>${fdaf.applicationGroupId}</groupId>
+            <artifactId>${fdaf.applicationCodeName}-erc</artifactId>
+            <version>${fdaf.applicationVersion}</version>
         </dependency>
         <dependency>
-            <groupId>io.sourceforge.fdaf</groupId>
-            <artifactId>fdaf-entity-with-eclipselink</artifactId>
-            <version>1.0</version>
+            <groupId>${fdaf.applicationGroupId}</groupId>
+            <artifactId>${fdaf.applicationCodeName}-entity-with-__JPA_PROVIDER__</artifactId>
+            <version>${fdaf.applicationVersion}</version>
         </dependency>
-<dependency>
-<groupId>javax.mail</groupId>
-<artifactId>javax.mail-api</artifactId>
-<version>1.6.2</version>
-<scope>provided</scope>
-</dependency>
-<dependency>
-<groupId>javax.activation</groupId>
-<artifactId>javax.activation-api</artifactId>
-<version>1.2.0</version>
-<scope>provided</scope>
-</dependency>
-<dependency>
-<groupId>javax.annotation</groupId>
-<artifactId>javax.annotation-api</artifactId>
-<version>1.3.2</version>
-<type>jar</type>
-</dependency>
-<dependency>
-<groupId>org.jboss.spec.javax.ejb</groupId>
-<artifactId>jboss-ejb-api_3.2_spec</artifactId>
-<version>1.0.1.Final</version>
-<scope>provided</scope>
-</dependency>
-<dependency>
-<groupId>org.jboss.spec.javax.faces</groupId>
-<artifactId>jboss-jsf-api_2.3_spec</artifactId>
-<version>2.3.5.SP1</version>
-<scope>provided</scope>
-</dependency>
-<dependency>
-<groupId>javax.inject</groupId>
-<artifactId>javax.inject</artifactId>
-<version>1</version>
-<scope>provided</scope>
-</dependency>
-<dependency>
-<groupId>javax.el</groupId>
-<artifactId>javax.el-api</artifactId>
-<version>3.0.0</version>
-<scope>provided</scope>
-</dependency>
-<dependency>
-<groupId>javax.enterprise</groupId>
-<artifactId>cdi-api</artifactId>
-<version>2.0.SP1</version>
-<scope>provided</scope>
-</dependency>
-<dependency>
-<groupId>org.jboss.spec.javax.servlet</groupId>
-<artifactId>jboss-servlet-api_4.0_spec</artifactId>
-<version>1.0.0.Final</version>
-<scope>provided</scope>
-</dependency>
-<dependency>
-<groupId>javax.websocket</groupId>
-<artifactId>javax.websocket-api</artifactId>
-<version>1.1</version>
-<scope>provided</scope>
-</dependency>
-<dependency>
-<groupId>javax.validation</groupId>
-<artifactId>validation-api</artifactId>
-<version>2.0.1.Final</version>
-<scope>provided</scope>
-</dependency>
-
+        <dependency>
+            <groupId>${fdaf.applicationGroupId}</groupId>
+            <artifactId>${fdaf.applicationCodeName}-logic-with-__JPA_PROVIDER__</artifactId>
+            <version>${fdaf.applicationVersion}</version>
+        </dependency>
+        __DEPENDENCIES__
     </dependencies>
     
 </project>
