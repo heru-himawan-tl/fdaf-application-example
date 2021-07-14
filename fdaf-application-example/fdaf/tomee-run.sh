@@ -45,15 +45,15 @@ function run() {
 CWD=$(pwd)
 BASE=$(basename $CWD)
 
-if [ "$1" = "--compile-test-multi-tiers" ]; then 
-    if ./compile-test.sh with-eclipselink --tomee-test-multi-tiers; then
+if [ "$1" = "--compile-test-multi-packs" ]; then 
+    if ./compile-test.sh with-eclipselink --tomee-test-multi-packs; then
         run    
     fi
-elif [ "$1" = "--compile-test-single-tier" ]; then 
-    if ./compile-test.sh with-eclipselink-in-single-war --tomee-test-single-tier; then
+elif [ "$1" = "--compile-test-single-pack" ]; then 
+    if ./compile-test.sh with-eclipselink-in-single-war --tomee-test-single-pack; then
         run    
     fi
-elif [ "$1" = "--multi-tiers" ]; then
+elif [ "$1" = "--multi-packs" ]; then
     WAR="compilable-source/$BASE-with-eclipselink/build/$BASE-webapp.war"
     EAR="compilable-source/$BASE-with-eclipselink/build/$BASE.ear"
     if [ -f "$WAR" ] && [ -f "$EAR" ]; then
@@ -63,9 +63,9 @@ elif [ "$1" = "--multi-tiers" ]; then
         run
     else
         echo "One of $BASE WAR archive or EAR archive cannot be found."
-        echo "Try with option: --compile-test-multi-tiers"
+        echo "Try with option: --compile-test-multi-packs"
     fi
-elif [ "$1" = "--single-tier" ]; then
+elif [ "$1" = "--single-pack" ]; then
     WAR="compilable-source/$BASE-with-eclipselink-in-single-war/build/$BASE-webapp.war"
     echo $WAR
     if [ -f "$WAR" ]; then
@@ -74,7 +74,7 @@ elif [ "$1" = "--single-tier" ]; then
         run
     else
         echo "Not found: $WAR"
-        echo "Try with option: --compile-test-single-tier"
+        echo "Try with option: --compile-test-single-pack"
     fi
 else
     run

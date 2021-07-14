@@ -33,13 +33,13 @@ cd $CWD
 
 date > last-update-ts
 
-if [ "$2" = "--tomee-test-multi-tiers" ]; then
+if [ "$2" = "--tomee-test-multi-packs" ]; then
     rm -rfv *tomee*/webapps/fdaf*
     cp -afv compilable-source/$BASE-with-eclipselink/build/$BASE.ear *tomee*/webapps
     cp -afv compilable-source/$BASE-with-eclipselink/build/$BASE-webapp.war *tomee*/webapps
 fi
 
-if [ "$2" = "--tomee-test-single-tier" ]; then
+if [ "$2" = "--tomee-test-single-pack" ]; then
     rm -rfv *tomee*/webapps/fdaf*
     cp -afv compilable-source/$BASE-with-eclipselink-in-single-war/build/$BASE-webapp.war *tomee*/webapps
 fi

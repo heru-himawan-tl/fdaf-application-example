@@ -55,7 +55,7 @@ Notice:
 The data source ID must be identical with that defined in
 `./fdaf-application-example/fdaf/development-source/io.sourceforge.fdaf/fdaf/develop.properties`:
 
-    fdaf.dataSourceName=MySqlFDAF
+        fdaf.dataSourceName=MySqlFDAF
     
 #### Specific Required TomEE System Properties
 
@@ -71,30 +71,30 @@ Disable or commented the serialization class blacklist:
 #### Compile & Run
 
 To compile and run, just call the `tomee-run.sh` script from a terminal
-console, apply `--compile-test-multi-tiers` or `--compile-test-single-tiear`
+console, apply `--compile-test-multi-packs` or `--compile-test-single-tiear`
 option if not already compiled:
 
-- Compile and run as multi-tiers architecture:
+- Compile as separated EAR and WAR, deploy and run:
 
-        ./tomee-run.sh --compile-test-multi-tiers  
+        ./tomee-run.sh --compile-test-multi-packs  
 
-- Compile and run as single architecture:
+- Compile as single WAR archive, deploy and run:
 
-        ./tomee-run.sh --compile-test-single-tier
+        ./tomee-run.sh --compile-test-single-pack
     
 If already compiled, e.g. to test which best TomEE configurations for
 running this FDAF application example, you may call `tomee-run.sh`
 without an option:
 
-    ./tomee-run.sh
+        ./tomee-run.sh
     
-or with `--multi-tiers` or `--single-tier` option:
+or with `--multi-packs` or `--single-pack` option:
 
-- Run as multi-tiers architecture:
+- Run with separated EAR and WAR deployment:
 
-        ./tomee-run.sh --multi-tiers  
+        ./tomee-run.sh --multi-packs  
 
-- Run as single-tier architecture:
+- Run with single WAR deployment:
 
         ./tomee-run.sh --single-tiear
 
@@ -109,7 +109,7 @@ To test this FDAF application example under WildFly, the development-source
 must be pre-compiled by the call of `compile-test.sh` script with argument
 `with-hibernate`:
 
-    ./compile-test.sh with-hibernate
+        ./compile-test.sh with-hibernate
     
 The compilation will yield the following items:
 
@@ -182,7 +182,7 @@ Notice:
 The data source JNDI name must be identical with that defined in
 `./fdaf-application-example/fdaf/development-source/io.sourceforge.fdaf/fdaf/develop.properties`:
 
-    fdaf.dataSourceName=MySqlFDAF
+        fdaf.dataSourceName=MySqlFDAF
     
 #### Runtime Naming Convention Of Application Deployment Under WildFly
 
