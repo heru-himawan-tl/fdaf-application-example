@@ -45,7 +45,7 @@ import javax.inject.Named;
 @Named
 public class PrintingServiceBean implements Serializable {
 
-    @EJB(lookup = "java:global/fdaf/CommonConfiguration")
+    @EJB(lookup = "java:global/fdaf/CommonConfigurationService")
     private CommonConfigurationInterface config;
 
     private static final long serialVersionUID = 1L;
