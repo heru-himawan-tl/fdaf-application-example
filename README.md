@@ -71,15 +71,26 @@ Disable or commented the serialization class blacklist:
 #### Compile & Run
 
 To compile and run, just call the `tomee-run.sh` script from a terminal
-console, apply `--compile-test` option if not already compiled:
+console, apply `--compile-test-multi-tiers` or `--compile-test-single-tiear`
+option if not already compiled:
 
-    ./tomee-run.sh --compile-test
+    ./tomee-run.sh --compile-test-multi-tiers  
+
+
+    ./tomee-run.sh --compile-test-single-tier
     
 If already compiled, e.g. to test which best TomEE configurations for
 running this FDAF application example, you may call `tomee-run.sh`
 without an option:
 
-    ./tomee-run.sh 
+    ./tomee-run.sh
+    
+or with `--multi-tiers` or `--single-tier` option:
+
+    ./tomee-run.sh --multi-tiers  
+
+
+    ./tomee-run.sh --single-tiear
 
 The web application can be accessed from a browser program such as
 Firefox with URL: `http://localhost:8080/fdaf-webapp/`
