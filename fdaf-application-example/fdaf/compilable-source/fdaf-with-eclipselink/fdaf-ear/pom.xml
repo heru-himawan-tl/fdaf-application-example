@@ -71,7 +71,7 @@ USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
                     <modules>
                         <ejbModule>
                             <groupId>io.sourceforge.fdaf</groupId>
-                            <artifactId>fdaf-logic-with-eclipselink</artifactId>
+                            <artifactId>fdaf-logic</artifactId>
                             <bundleFileName>fdaf-logic.jar</bundleFileName>
                         </ejbModule>
                         <jarModule>
@@ -115,7 +115,7 @@ USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
         </dependency>
         <dependency>
             <groupId>io.sourceforge.fdaf</groupId>
-            <artifactId>fdaf-logic-with-eclipselink</artifactId>
+            <artifactId>fdaf-logic</artifactId>
             <version>1.0</version>
             <type>ejb</type>
         </dependency>

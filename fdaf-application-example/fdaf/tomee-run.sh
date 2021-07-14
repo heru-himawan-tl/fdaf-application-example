@@ -42,9 +42,39 @@ function run() {
     tail -f *tomee*/logs/catalina.out
 }
 
-if [ "$1" = "--compile-test" ]; then 
-    if ./compile-test.sh with-eclipselink --tomee-test; then
+CWD=$(pwd)
+BASE=$(basename $CWD)
+
+if [ "$1" = "--compile-test-multi-tiers" ]; then 
+    if ./compile-test.sh with-eclipselink --tomee-test-multi-tiers; then
         run    
+    fi
+elif [ "$1" = "--compile-test-single-tier" ]; then 
+    if ./compile-test.sh with-eclipselink-in-single-war --tomee-test-single-tier; then
+        run    
+    fi
+elif [ "$1" = "--multi-tiers" ]; then
+    WAR="compilable-source/$BASE-with-eclipselink/build/$BASE-webapp.war"
+    EAR="compilable-source/$BASE-with-eclipselink/build/$BASE.ear"
+    if [ -f "$WAR" ] && [ -f "$EAR" ]; then
+        rm -rfv ./*tomee*/webapps/$BASE*
+        cp -afv $WAR ./*tomee*/webapps/.
+        cp -afv $EAR ./*tomee*/webapps/.
+        run
+    else
+        echo "One of $BASE WAR archive or EAR archive cannot be found."
+        echo "Try with option: --compile-test-multi-tiers"
+    fi
+elif [ "$1" = "--single-tier" ]; then
+    WAR="compilable-source/$BASE-with-eclipselink-in-single-war/build/$BASE-webapp.war"
+    echo $WAR
+    if [ -f "$WAR" ]; then
+        rm -rfv ./*tomee*/webapps/$BASE*
+        cp -afv $WAR ./*tomee*/webapps/.
+        run
+    else
+        echo "Not found: $WAR"
+        echo "Try with option: --compile-test-single-tier"
     fi
 else
     run

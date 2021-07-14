@@ -51,8 +51,8 @@ USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     <modules>
         <module>fdaf-base</module>
         <module>fdaf-erc</module>
-        <module>fdaf-entity-with-hibernate</module>
-        <module>fdaf-logic-with-hibernate</module>
+        <module>fdaf-entity</module>
+        <module>fdaf-logic</module>
         <module>fdaf-webapp</module>
         <module>fdaf-ear</module>
     </modules>
