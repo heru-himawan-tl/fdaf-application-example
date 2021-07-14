@@ -76,11 +76,11 @@ option if not already compiled:
 
 - Compile and run as multi-tiers architecture:
 
-    ./tomee-run.sh --compile-test-multi-tiers  
+        ./tomee-run.sh --compile-test-multi-tiers  
 
 - Compile and run as single architecture:
 
-    ./tomee-run.sh --compile-test-single-tier
+        ./tomee-run.sh --compile-test-single-tier
     
 If already compiled, e.g. to test which best TomEE configurations for
 running this FDAF application example, you may call `tomee-run.sh`
@@ -92,11 +92,11 @@ or with `--multi-tiers` or `--single-tier` option:
 
 - Run as multi-tiers architecture:
 
-    ./tomee-run.sh --multi-tiers  
+        ./tomee-run.sh --multi-tiers  
 
 - Run as single-tier architecture:
 
-    ./tomee-run.sh --single-tiear
+        ./tomee-run.sh --single-tiear
 
 The web application can be accessed from a browser program such as
 Firefox with URL: `http://localhost:8080/fdaf-webapp/`
