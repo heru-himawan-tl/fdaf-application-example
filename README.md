@@ -26,7 +26,7 @@ it, and Apache Maven version 3.6 or later installed on it.
 An Apache TomEE Plume version 8.0.6 or higher is required for this
 test. Download and extract it inside `./fdaf-application-example/fdaf/`
 directory, so that you will, for example, get the TomEE installation
-directory (or a `$CATALINA_HOME`) will be alike as:
+directory (or a `CATALINA_HOME`) will be alike as:
 `./fdaf-application-example/fdaf/apache-tomee-plume-8.0.6/`.
 
 #### TomEE Data Source & Transaction Manager Configuration
@@ -47,9 +47,9 @@ transaction manager for TomEE as shown by the example below:
     </tomee>
     
 The above data source configuration example requires a MySQL Connector/J JAR
-present in `$CATALINA_HOME/lib` directory. Download a MySQL Connector/J from
+present in `CATALINA_HOME/lib/` directory. Download a MySQL Connector/J from
 the [official MySQL development download page](https://dev.mysql.com/downloads/connector/j/),
-and put it inside `$CATALINA_HOME/lib` directory.
+and put it inside `CATALINA_HOME/lib/` directory.
 
 Notice:  
 The data source ID must be identical with that defined in
