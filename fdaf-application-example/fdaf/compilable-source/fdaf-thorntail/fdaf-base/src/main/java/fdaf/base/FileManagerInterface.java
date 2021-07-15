@@ -28,43 +28,25 @@
  */
 package fdaf.base;
 
-public abstract class ApplicationIdentifier extends FrameworkIdentifier {
+import java.io.InputStream;
+import java.util.List;
+import java.util.Map;
 
-    protected static final String USER_SESSION_ID_FIELD_NAME = "FDAF";
+public interface FileManagerInterface {
 
-    protected ApplicationIdentifier() {
-        // NO-OP
-    }
+    public void populateNodes();
     
-    public String getApplicationCodeName() {
-        return "fdaf";
-    }
+    public Map<String, String> getNodeMap();
     
-    public String getApplicationName() {
-        return "FDAF";
-    }
+    public void search(String keywords);
     
-    public String getApplicationLongName() {
-        return "FDAF Application Example";
-    }
+    public List<String> getSearchResultList();
+
+    public void changeDirectory(String directoryAddress);
     
-    public String getApplicationDescription() {
-        return "An application example shows you how to build efficiently a sample of Java EE application based FDAF framework. This is a quick overview of the most common FDAF starters, along with examples on how to use the FDAF framework API's and abstractions.";
-    }
+    public void upload(List<InputStream> fileStreamList);
     
-    public String getApplicationDevelCopyright() {
-        return "Copyright (C) Heru Himawan Tejo Laksono";
-    }
+    public void move(List<String> fileAddressList, String sourceDirectory, String destinationDirectory);
     
-    public String getApplicationDevelHomePage() {
-        return "https://github.com/heru-himawan-tl/fdaf-application-example";
-    }
-    
-    public String getApplicationVersion() {
-        return "1.0";
-    }
-    
-    public String getApplicationCompiledDate() {
-        return "2021-07-15 at 21:11:31 WIB";
-    }
+    public void remove(List<String> fileAddressList);
 }
