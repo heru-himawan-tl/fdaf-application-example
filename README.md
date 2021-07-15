@@ -96,17 +96,22 @@ or with `--multi-packs` or `--single-pack` option:
 
 - Run with single WAR deployment:
 
-        ./tomee-run.sh --single-tiear
+        ./tomee-run.sh --single-pack
 
 The web application can be accessed from a browser program such as
 Firefox with URL: `http://localhost:8080/fdaf-webapp/`
+
+Notice:  
+Due the design of Apache TomEE, it is recommended to apply single WAR archive
+deployment, whether by apply `--compile-test-single-pack` or `--single-pack`
+option.
 
 ### Compile To Test Under WildFly Application Server
 
 #### Compiling
 
 To test this FDAF application example under WildFly, the development-source
-must be pre-compiled by the call of `compile-test.sh` script with argument
+can be pre-compiled by the call of `compile-test.sh` script with argument
 `with-hibernate`:
 
         ./compile-test.sh with-hibernate
@@ -128,6 +133,20 @@ deployment.
 - `./fdaf-application-example/fdaf/compilable-source/fdaf-with-hibernate/build/fdaf-webapp.war` -
 a WAR archive of FDAF application example for a managed web-application
 deployment.
+
+Other choice, by the call of `compile-test.sh` script with argument
+`with-hibernate-in-single-war`, to yield single WAR application with business
+logic package (`fdaf-logic.jar`) packaged in `WEB-INF/lib`:
+
+        ./compile-test.sh with-hibernate-in-single-war
+
+- `./fdaf-application-example/fdaf/deployment-test/fdaf-with-hibernate-in-single-war/webapp/` -
+a directory contains FDAF application example as an exploded single WAR for
+unmanaged web-application deployment.
+ 
+- `./fdaf-application-example/fdaf/compilable-source/fdaf-with-hibernate-in-single-war/build/fdaf-webapp.war` -
+a WAR archive that contains EJB JAR of `fdaf-logic-jar` of FDAF application
+example for a managed web-application deployment.
 
 #### Required: Adding MySQL Connector/J Module On WildFly
 
@@ -186,6 +205,17 @@ The data source JNDI name must be identical with that defined in
     
 #### Runtime Naming Convention Of Application Deployment Under WildFly
 
-In order the web-application part to be working properly under WildFly, the
-correct runtime name must be applied to EAR part of this FDAF application
-example deployment, as `fdaf.ear`.
+If you will test or deploy FDAF-based application under WildFly, you must
+follow the following runtime naming convention:
+
+- If deployment applies separation between enterprise application and web
+application, in order the web-application part to be working properly, the
+correct runtime name must be applied to EAR part. This FDAF application
+example EAR deployment must have runtime name as `fdaf.ear`.  
+
+- If deployment applies separation between enterprise application and web
+application, in order the web-application part to be working properly, the
+correct runtime name must be applied to EAR part. This FDAF application
+example EAR deployment must have runtime name as `fdaf.ear`.   
+
+
