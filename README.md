@@ -134,7 +134,7 @@ deployment.
 a WAR archive of FDAF application example for a managed web-application
 deployment.
 
-Other choice, by the call of `compile-test.sh` script with argument
+Another choice, by the call of `compile-test.sh` script with argument
 `with-hibernate-in-single-war`, to yield single WAR application with business
 logic package (`fdaf-logic.jar`) packaged in `WEB-INF/lib`:
 
