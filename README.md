@@ -213,9 +213,9 @@ application, in order the web-application part to be working properly, the
 correct runtime name must be applied to EAR part. This FDAF application
 example EAR deployment must have runtime name as `fdaf.ear`.  
 
-- If deployment applies separation between enterprise application and web
-application, in order the web-application part to be working properly, the
-correct runtime name must be applied to EAR part. This FDAF application
-example EAR deployment must have runtime name as `fdaf.ear`.   
+- If deployment applies single WAR web application, in order the web
+application part to be working properly, the correct runtime name must
+be applied to it. The single WAR deployment runtime name of this
+FDAF application must be `fdaf-webapp.war`.   
 
 
