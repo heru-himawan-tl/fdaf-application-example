@@ -140,6 +140,8 @@ logic package (`fdaf-logic.jar`) packaged in `WEB-INF/lib`:
 
         ./compile-test.sh with-hibernate-in-single-war
 
+The single WAR compilation will yield the following items:
+
 - `./fdaf-application-example/fdaf/deployment-test/fdaf-with-hibernate-in-single-war/webapp/` -
 a directory contains FDAF application example as an exploded single WAR for
 unmanaged web-application deployment.

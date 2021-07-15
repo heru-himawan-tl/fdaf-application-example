@@ -152,12 +152,14 @@ public class FileManagerWebAppBean extends AbstractBaseWebAppBean implements Ser
         filesMap = new TreeMap<String, String>(localFilesShortByName);
         
         if (!directoriesMap.isEmpty()) {
+            System.out.println("Directories: ");
             for (String key : directoriesMap.keySet()) {
                 System.out.println(directoriesMap.get(key));
             }
         }
         
         if (!filesMap.isEmpty()) {
+            System.out.println("Directories: ");
             for (String key : filesMap.keySet()) {
                 System.out.println(filesMap.get(key));
             }
