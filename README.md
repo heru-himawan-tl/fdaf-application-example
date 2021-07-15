@@ -55,7 +55,7 @@ Notice:
 The data source ID must be identical with that defined in
 `./fdaf-application-example/fdaf/development-source/io.sourceforge.fdaf/fdaf/develop.properties`:
 
-        fdaf.dataSourceName=MySqlFDAF
+    fdaf.dataSourceName=MySqlFDAF
     
 #### Specific Required TomEE System Properties
 
@@ -86,7 +86,7 @@ If already compiled, e.g. to test which best TomEE configurations for
 running this FDAF application example, you may call `tomee-run.sh`
 without an option:
 
-        ./tomee-run.sh
+    ./tomee-run.sh
     
 or with `--multi-packs` or `--single-pack` option:
 
@@ -114,7 +114,7 @@ To test this FDAF application example under WildFly, the development-source
 can be pre-compiled by the call of `compile-test.sh` script with argument
 `with-hibernate`:
 
-        ./compile-test.sh with-hibernate
+    ./compile-test.sh with-hibernate
     
 The compilation will yield the following items:
 
@@ -138,7 +138,7 @@ Another choice, by the call of `compile-test.sh` script with argument
 `with-hibernate-in-single-war`, to yield single WAR application with business
 logic package (`fdaf-logic.jar`) packaged in `WEB-INF/lib`:
 
-        ./compile-test.sh with-hibernate-in-single-war
+    ./compile-test.sh with-hibernate-in-single-war
 
 The single WAR compilation will yield the following items:
 
@@ -203,7 +203,7 @@ Notice:
 The data source JNDI name must be identical with that defined in
 `./fdaf-application-example/fdaf/development-source/io.sourceforge.fdaf/fdaf/develop.properties`:
 
-        fdaf.dataSourceName=MySqlFDAF
+    fdaf.dataSourceName=MySqlFDAF
     
 #### Runtime Naming Convention Of Application Deployment Under WildFly
 
