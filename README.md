@@ -64,7 +64,7 @@ Specific TomEE system properties must be set within the `CATALINA_HOME/conf/syst
     org.apache.el.parser.SKIP_IDENTIFIER_CHECK = true
     tomee.serialization.class.whitelist = *
     
-Disable or comment the serialization class blacklist:
+Disable or comment the `serialization.class.blacklist` property:
 
     # tomee.serialization.class.blacklist = *
 
