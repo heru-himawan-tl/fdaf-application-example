@@ -205,8 +205,9 @@ The data source JNDI name must be identical with that defined in
     
 #### Runtime Naming Convention Of Application Deployment Under WildFly
 
-If you will test or deploy FDAF-based application under WildFly, you must
-follow the following runtime naming convention:
+To test or deploy this FDAF application example under WildFly, you
+must follow the following runtime naming convention, as it is an FDAF
+framework standard:
 
 - If deployment applies separation between enterprise application and web
 application, in order the web-application part to be working properly, the
