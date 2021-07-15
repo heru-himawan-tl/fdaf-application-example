@@ -59,12 +59,12 @@ The data source ID must be identical with that defined in
     
 #### Specific Required TomEE System Properties
 
-Specific TomEE system properties must be set within the `system.properties`:
+Specific TomEE system properties must be set within the `CATALINA_HOME/conf/system.properties`:
 
     org.apache.el.parser.SKIP_IDENTIFIER_CHECK = true
     tomee.serialization.class.whitelist = *
     
-Disable or commented the serialization class blacklist:
+Disable or comment the serialization class blacklist:
 
     # tomee.serialization.class.blacklist = *
 
