@@ -211,13 +211,6 @@ public class FileManagerUtil {
     public LinkedHashMap<String, String> getNodeMap() {
         return nodeMap;
     }
-    
-    public void search(String keywords) {
-    }
-    
-    public List<String> getSearchResultList() {
-        return null;
-    }
 
     public void changeDirectory(String currentDirectory) {
         this.currentDirectory = currentDirectory;
@@ -233,5 +226,12 @@ public class FileManagerUtil {
     }
    
     public void remove(List<String> fileAddressList) {
+    }
+    
+    public void search(String keywords) {
+    }
+    
+    public List<String> getSearchResultList() {
+        return null;
     }
 }

@@ -34,6 +34,12 @@ import java.util.List;
 
 public interface FileManagerInterface {
 
+    public void upload(List<InputStream> fileStreamList);
+    
+    public void move(List<String> fileAddressList, String destinationDirectory);
+    
+    public void remove(List<String> fileAddressList);
+    
     public void populateNodes();
     
     public LinkedHashMap<String, String> getNodeMap();
@@ -41,12 +47,6 @@ public interface FileManagerInterface {
     public void search(String keywords);
     
     public List<String> getSearchResultList();
-
+    
     public void changeDirectory(String baseDirectory);
-    
-    public void upload(List<InputStream> fileStreamList);
-    
-    public void move(List<String> fileAddressList, String destinationDirectory);
-    
-    public void remove(List<String> fileAddressList);
 }
