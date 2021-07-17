@@ -50,13 +50,14 @@ public class FileManagerTool extends HttpServlet {
         String address = request.getParameter("address");
         String mimeType = "";
         Path path = null;
-        
         if (address == null || (address != null && address.trim().isEmpty()) || invalid) {
             response.sendError(HttpServletResponse.SC_BAD_REQUEST);
+            return;
         }
         path = Paths.get(address);
         if (!Files.exists(path)) {
             response.sendError(HttpServletResponse.SC_NOT_FOUND);
+            return;
         }
         if (!Files.isDirectory(path)) {
             mimeType = new String(Files.probeContentType(path) + "").toLowerCase();
@@ -70,6 +71,7 @@ public class FileManagerTool extends HttpServlet {
         path = Paths.get(address);
         if (!Files.exists(path)) {
             response.sendError(HttpServletResponse.SC_NOT_FOUND);
+            return;
         }
         response.setContentType(mimeType);
         response.setHeader("Content-Disposition", "inline; filename=\"" + address.replaceAll(".*/", "") + "\"");
