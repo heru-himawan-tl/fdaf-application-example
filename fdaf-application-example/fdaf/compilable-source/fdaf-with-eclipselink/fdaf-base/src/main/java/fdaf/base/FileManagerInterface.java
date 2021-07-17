@@ -29,24 +29,24 @@
 package fdaf.base;
 
 import java.io.InputStream;
+import java.util.LinkedHashMap;
 import java.util.List;
-import java.util.Map;
 
 public interface FileManagerInterface {
 
     public void populateNodes();
     
-    public Map<String, String> getNodeMap();
+    public LinkedHashMap<String, String> getNodeMap();
     
     public void search(String keywords);
     
     public List<String> getSearchResultList();
 
-    public void changeDirectory(String directoryAddress);
+    public void changeDirectory(String baseDirectory);
     
     public void upload(List<InputStream> fileStreamList);
     
-    public void move(List<String> fileAddressList, String sourceDirectory, String destinationDirectory);
+    public void move(List<String> fileAddressList, String destinationDirectory);
     
     public void remove(List<String> fileAddressList);
 }

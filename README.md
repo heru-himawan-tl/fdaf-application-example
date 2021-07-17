@@ -16,10 +16,10 @@ and MyFaces, it prevents FDAF application for working properly.
 
 ## HOWTO Compile & Run
 
-Since this experiment uses shell script, this guide assumes that you are with
-a GNU/Linux-based operating system that already have a MySQL server or a
-MariaDB server installed and running on it, an OpenJDK 8 or newer installed on
-it, and Apache Maven version 3.6 or later installed on it.
+This guide assumes that you will be working with a laptop, PC, or server with
+GNU/Linux-based operating system installed on it, that already have a MySQL
+server or a MariaDB server installed and running on it, an OpenJDK 8 or newer
+installed on it, and Apache Maven version 3.6 or later installed on it.
 
 ### Compile For & Run Under Apache TomEE Plume
 
