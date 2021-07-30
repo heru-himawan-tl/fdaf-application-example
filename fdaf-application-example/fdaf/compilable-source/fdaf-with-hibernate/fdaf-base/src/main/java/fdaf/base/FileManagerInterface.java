@@ -49,5 +49,11 @@ public interface FileManagerInterface {
     
     public List<String> getSearchResultList();
     
-    public void changeDirectory(String baseDirectory);
+    public void setCurrentDirectory(String baseDirectory);
+    
+    public String getCurrentDirectory();
+    
+    public void toParentDirectory();
+    
+    public void toHomeDirectory();
 }
