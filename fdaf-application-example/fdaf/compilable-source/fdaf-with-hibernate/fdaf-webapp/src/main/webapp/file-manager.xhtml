@@ -83,6 +83,7 @@ USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
                                     immediate="true" rendered="#{fileManagerWebAppBean.isLoggedOn eq true}">
                                     <f:actionListener binding="#{fileManagerWebAppBean.prepareCreateDirectory()}" />
                                     <f:ajax event="click" execute="@form" render="@form" />
+                                </h:commandButton>
                                 <h:commandButton type="button" styleClass="#{
                                     (fileManagerWebAppBean.isLoggedOn eq true) ? 'grouped_button_right' : 'common_button'}"
                                     onclick="document.location.href='adm.jsf'" value="#{label.buttonClose}" />
