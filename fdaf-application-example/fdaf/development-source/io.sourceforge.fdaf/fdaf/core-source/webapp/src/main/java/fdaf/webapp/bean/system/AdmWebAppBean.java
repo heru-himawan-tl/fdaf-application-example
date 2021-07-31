@@ -56,9 +56,16 @@ public class AdmWebAppBean extends AbstractBaseWebAppBean implements Serializabl
     
     @EJB(lookup = "java:global/__EJB_LOOKUP_DIR__/CommonConfigurationService")
     private CommonConfigurationInterface commonConfiguration;
+    
+    @Inject
+    private Controller controller;
 
     public AdmWebAppBean() {
         // NO-OP
+    }
+    
+    protected Controller getController() {
+        return controller;
     }
 
     protected AdministratorAccountCheckerInterface getAdministratorAccountChecker() {

@@ -83,9 +83,16 @@ public class FileManagerWebAppBean extends AbstractBaseWebAppBean implements Ser
     private String newDirectoryName;
     
     private boolean inPrepareCreateDirectory;
+    
+    @Inject
+    private Controller controller;
 
     public FileManagerWebAppBean() {
         // NO-OP
+    }
+    
+    protected Controller getController() {
+        return controller;
     }
     
     @Override
@@ -147,6 +154,10 @@ public class FileManagerWebAppBean extends AbstractBaseWebAppBean implements Ser
     
     public void prepareCreateDirectory() {
         inPrepareCreateDirectory = true;
+    }
+    
+    public boolean getInPrepareCreateDirectory() {
+        return inPrepareCreateDirectory;
     }
     
     public void setNewDirectoryName(String newDirectoryName) {

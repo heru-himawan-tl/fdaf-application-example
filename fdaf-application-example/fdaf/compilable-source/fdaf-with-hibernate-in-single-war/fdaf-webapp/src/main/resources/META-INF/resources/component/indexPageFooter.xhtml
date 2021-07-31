@@ -33,18 +33,17 @@ USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
         xmlns:composite="http://java.sun.com/jsf/composite"
         xmlns:h="http://java.sun.com/jsf/html">
     <composite:interface>
-        <composite:attribute required="true" name="webAppBean" type="java.lang.Object" />
     </composite:interface>
     <composite:implementation>
         <h:panelGroup layout="block" styleClass="index_page_footer_container">
             <h:panelGroup layout="block" styleClass="index_page_footer_box">
                 <h:panelGroup layout="block" styleClass="index_page_footer_box_inner">
                     <h:panelGroup layout="block" styleClass="index_page_footer_box_deeper">
-                        <h:outputText value="#{cc.attrs.webAppBean.applicationLongName}" /> V.
-                        <h:outputText value="#{cc.attrs.webAppBean.applicationVersion}" />
+                        <h:outputText value="#{controller.bean.applicationLongName}" /> V.
+                        <h:outputText value="#{controller.bean.applicationVersion}" />
                         <br />
-                        <h:outputText value="#{cc.attrs.webAppBean.applicationDevelCopyright}" /><br />
-                        Homepage: <a href="#{cc.attrs.webAppBean.applicationDevelHomePage}" targat="_blank"><h:outputText value="#{cc.attrs.webAppBean.applicationDevelHomePage}" /></a>
+                        <h:outputText value="#{controller.bean.applicationDevelCopyright}" /><br />
+                        Homepage: <a href="#{controller.bean.applicationDevelHomePage}" targat="_blank"><h:outputText value="#{controller.bean.applicationDevelHomePage}" /></a>
                     </h:panelGroup>
                 </h:panelGroup>
             </h:panelGroup>
