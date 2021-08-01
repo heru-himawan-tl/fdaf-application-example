@@ -29,11 +29,7 @@
 package fdaf.webapp.bean.system;
 
 import fdaf.base.AddAdministratorInterface;
-import fdaf.base.AdministratorAccountCheckerInterface;
-import fdaf.base.CommonConfigurationInterface;
-import fdaf.base.DatabaseServiceCheckerInterface;
 import fdaf.base.MailerInterface;
-import fdaf.base.UserSessionManagerInterface;
 import fdaf.base.UserType;
 import fdaf.webapp.base.AbstractWebAppBean;
 import fdaf.webapp.base.WebAppOpMode;
@@ -74,23 +70,11 @@ public class AddAdministratorWebAppBean extends AbstractWebAppBean implements Se
     
     private static final Random RANDOM = new SecureRandom();
     
-    @EJB(lookup = "java:global/fdaf-webapp/AdministratorAccountCheckerFacade")
-    private AdministratorAccountCheckerInterface rootAccountChecker;
-    
     @EJB(lookup = "java:global/fdaf-webapp/AddAdministratorFacade")
     private AddAdministratorInterface facade;
     
-    @EJB(lookup = "java:global/fdaf-webapp/UserSessionManagerFacade")
-    private UserSessionManagerInterface userSessionManager;
-    
     @EJB(lookup = "java:global/fdaf-webapp/MailerService")
     private MailerInterface mailer;
-    
-    @EJB(lookup = "java:global/fdaf-webapp/CommonConfigurationService")
-    private CommonConfigurationInterface commonConfiguration;
-    
-    @EJB(lookup = "java:global/fdaf-webapp/DatabaseServiceCheckerFacade")
-    private DatabaseServiceCheckerInterface dbServiceChecker;
     
     private String masterPasswordFileAddr;
     private String masterPassword;
@@ -107,23 +91,6 @@ public class AddAdministratorWebAppBean extends AbstractWebAppBean implements Se
     
     protected Controller getController() {
         return controller;
-    }
-    
-    @Override
-    protected DatabaseServiceCheckerInterface getDatabaseServiceChecker() {
-        return dbServiceChecker;
-    }
-
-    protected AdministratorAccountCheckerInterface getAdministratorAccountChecker() {
-        return rootAccountChecker;
-    }
-    
-    protected CommonConfigurationInterface getCommonConfiguration() {
-        return commonConfiguration;
-    }
-    
-    public UserSessionManagerInterface getUserSessionManager() {
-        return userSessionManager;
     }
 
     public void initAddAdministrator(ComponentSystemEvent event) throws AbortProcessingException {

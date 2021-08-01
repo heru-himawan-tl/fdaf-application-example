@@ -28,12 +28,8 @@
  */
 package fdaf.webapp.bean.system;
 
-import fdaf.base.AdministratorAccountCheckerInterface;
-import fdaf.base.CommonConfigurationInterface;
-import fdaf.base.DatabaseServiceCheckerInterface;
 import fdaf.base.MailerInterface;
 import fdaf.base.StaffInvitationInterface;
-import fdaf.base.UserSessionManagerInterface;
 import fdaf.logic.entity.StaffInvitation;
 import fdaf.webapp.base.AbstractWebAppBean;
 import fdaf.webapp.base.WebAppOpMode;
@@ -62,18 +58,6 @@ public class StaffInvitationWebAppBean extends AbstractWebAppBean implements Ser
     @EJB(lookup = "java:global/fdaf/fdaf-logic/MailerService")
     private MailerInterface mailer;
     
-    @EJB(lookup = "java:global/fdaf/fdaf-logic/AdministratorAccountCheckerFacade")
-    private AdministratorAccountCheckerInterface admAccountChecker;
-    
-    @EJB(lookup = "java:global/fdaf/fdaf-logic/UserSessionManagerFacade")
-    private UserSessionManagerInterface userSessionManager;
-    
-    @EJB(lookup = "java:global/fdaf/fdaf-logic/DatabaseServiceCheckerFacade")
-    private DatabaseServiceCheckerInterface dbServiceChecker;
-    
-    @EJB(lookup = "java:global/fdaf/fdaf-logic/CommonConfigurationService")
-    private CommonConfigurationInterface commonConfiguration;
-    
     private boolean mailerFailure;
     
     @Inject
@@ -87,28 +71,10 @@ public class StaffInvitationWebAppBean extends AbstractWebAppBean implements Ser
         return controller;
     }
 
-    protected AdministratorAccountCheckerInterface getAdministratorAccountChecker() {
-        return admAccountChecker;
-    }
-    
-    protected CommonConfigurationInterface getCommonConfiguration() {
-        return commonConfiguration;
-    }
-
     protected StaffInvitationInterface getFacade() {
         return facade;
     }
-    
-    @Override
-    protected DatabaseServiceCheckerInterface getDatabaseServiceChecker() {
-        return dbServiceChecker;
-    }
 
-    @Override
-    public UserSessionManagerInterface getUserSessionManager() {
-        return userSessionManager;
-    }
-    
     public boolean getMailerEnabled() {
         return mailer.isEnabled();
     }

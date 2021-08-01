@@ -28,12 +28,8 @@
  */
 package fdaf.webapp.bean.system;
 
-import fdaf.base.AdministratorAccountCheckerInterface;
-import fdaf.base.CommonConfigurationInterface;
-import fdaf.base.DatabaseServiceCheckerInterface;
 import fdaf.base.MailerInterface;
 import fdaf.base.UserRegistrationInterface;
-import fdaf.base.UserSessionManagerInterface;
 import fdaf.base.UserType;
 import fdaf.webapp.base.AbstractWebAppBean;
 import java.io.Serializable;
@@ -61,23 +57,11 @@ public class UserRegistrationWebAppBean extends AbstractWebAppBean implements Se
     
     private static final Logger LOGGER = Logger.getLogger(UserRegistrationWebAppBean.class.getName());
     
-    @EJB(lookup = "java:global/fdaf/fdaf-logic/AdministratorAccountCheckerFacade")
-    private AdministratorAccountCheckerInterface admAccountChecker;
-    
-    @EJB(lookup = "java:global/fdaf/fdaf-logic/UserSessionManagerFacade")
-    private UserSessionManagerInterface userSessionManager;
-    
-    @EJB(lookup = "java:global/fdaf/fdaf-logic/DatabaseServiceCheckerFacade")
-    private DatabaseServiceCheckerInterface dbServiceChecker;
-    
     @EJB(lookup = "java:global/fdaf/fdaf-logic/UserRegistrationFacade")
     private UserRegistrationInterface facade;
     
     @EJB(lookup = "java:global/fdaf/fdaf-logic/MailerService")
     private MailerInterface mailer;
-    
-    @EJB(lookup = "java:global/fdaf/fdaf-logic/CommonConfigurationService")
-    private CommonConfigurationInterface commonConfiguration;
     
     private UserType userType;
     
@@ -111,24 +95,6 @@ public class UserRegistrationWebAppBean extends AbstractWebAppBean implements Se
     
     protected Controller getController() {
         return controller;
-    }
-    
-    protected AdministratorAccountCheckerInterface getAdministratorAccountChecker() {
-        return admAccountChecker;
-    }
-    
-    protected CommonConfigurationInterface getCommonConfiguration() {
-        return commonConfiguration;
-    }
-
-    @Override
-    protected DatabaseServiceCheckerInterface getDatabaseServiceChecker() {
-        return dbServiceChecker;
-    }
-
-    @Override
-    public UserSessionManagerInterface getUserSessionManager() {
-        return userSessionManager;
     }
 
     @Override

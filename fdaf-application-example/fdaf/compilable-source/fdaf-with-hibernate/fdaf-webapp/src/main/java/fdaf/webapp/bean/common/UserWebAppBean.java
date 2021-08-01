@@ -28,11 +28,7 @@
  */
 package fdaf.webapp.bean.common;
 
-import fdaf.base.AdministratorAccountCheckerInterface;
-import fdaf.base.CommonConfigurationInterface;
-import fdaf.base.DatabaseServiceCheckerInterface;
 import fdaf.base.FacadeInterface;
-import fdaf.base.UserSessionManagerInterface;
 import fdaf.webapp.base.AbstractWebAppBean;
 import fdaf.webapp.bean.system.Controller;
 import fdaf.webapp.bean.system.EditIndexingBean;
@@ -51,18 +47,6 @@ public class UserWebAppBean extends AbstractWebAppBean implements Serializable {
 
     @EJB(lookup = "java:global/fdaf/fdaf-logic/UserFacade")
     private FacadeInterface facade;
-
-    @EJB(lookup = "java:global/fdaf/fdaf-logic/AdministratorAccountCheckerFacade")
-    private AdministratorAccountCheckerInterface admAccountChecker;
-
-    @EJB(lookup = "java:global/fdaf/fdaf-logic/UserSessionManagerFacade")
-    private UserSessionManagerInterface userSessionManager;
-    
-    @EJB(lookup = "java:global/fdaf/fdaf-logic/DatabaseServiceCheckerFacade")
-    private DatabaseServiceCheckerInterface dbServiceChecker;
-    
-    @EJB(lookup = "java:global/fdaf/fdaf-logic/CommonConfigurationService")
-    private CommonConfigurationInterface commonConfiguration;
     
     @Inject
     private EditIndexingBean editIndexing;
@@ -93,26 +77,8 @@ public class UserWebAppBean extends AbstractWebAppBean implements Serializable {
         return listUpdater;
     }
 
-    protected AdministratorAccountCheckerInterface getAdministratorAccountChecker() {
-        return admAccountChecker;
-    }
-    
-    protected CommonConfigurationInterface getCommonConfiguration() {
-        return commonConfiguration;
-    }
-
     protected FacadeInterface getFacade() {
         return facade;
-    }
-    
-    @Override
-    protected DatabaseServiceCheckerInterface getDatabaseServiceChecker() {
-        return dbServiceChecker;
-    }
-
-    @Override
-    public UserSessionManagerInterface getUserSessionManager() {
-        return userSessionManager;
     }
     
     // UI_UPDATER_ARRAY_GET_METHOD_HERE

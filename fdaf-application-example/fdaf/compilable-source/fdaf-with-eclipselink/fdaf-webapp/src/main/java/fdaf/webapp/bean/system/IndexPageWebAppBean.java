@@ -28,12 +28,6 @@
  */
 package fdaf.webapp.bean.system;
 
-import fdaf.base.AddAdministratorInterface;
-import fdaf.base.AdministratorAccountCheckerInterface;
-import fdaf.base.CommonConfigurationInterface;
-import fdaf.base.DatabaseServiceCheckerInterface;
-import fdaf.base.UserSessionManagerInterface;
-import fdaf.base.UserType;
 import fdaf.webapp.base.AbstractBaseWebAppBean;
 import java.io.Serializable;
 import javax.ejb.EJB;
@@ -49,18 +43,6 @@ public class IndexPageWebAppBean extends AbstractBaseWebAppBean implements Seria
 
     private static final long serialVersionUID = 1L;
     
-    @EJB(lookup = "java:global/fdaf/fdaf-logic/AdministratorAccountCheckerFacade")
-    private AdministratorAccountCheckerInterface rootAccountChecker;
-    
-    @EJB(lookup = "java:global/fdaf/fdaf-logic/UserSessionManagerFacade")
-    private UserSessionManagerInterface userSessionManager;
-    
-    @EJB(lookup = "java:global/fdaf/fdaf-logic/CommonConfigurationService")
-    private CommonConfigurationInterface commonConfiguration;
-    
-    @EJB(lookup = "java:global/fdaf/fdaf-logic/DatabaseServiceCheckerFacade")
-    private DatabaseServiceCheckerInterface dbServiceChecker;
-    
     @Inject
     private Controller controller;
 
@@ -74,22 +56,5 @@ public class IndexPageWebAppBean extends AbstractBaseWebAppBean implements Seria
     
     public void initIndexPage(ComponentSystemEvent event) throws AbortProcessingException {
         // NO-OP
-    }
-    
-    @Override
-    protected DatabaseServiceCheckerInterface getDatabaseServiceChecker() {
-        return dbServiceChecker;
-    }
-    
-    protected AdministratorAccountCheckerInterface getAdministratorAccountChecker() {
-        return rootAccountChecker;
-    }
-    
-    protected CommonConfigurationInterface getCommonConfiguration() {
-        return commonConfiguration;
-    }
-    
-    public UserSessionManagerInterface getUserSessionManager() {
-        return userSessionManager;
     }
 }

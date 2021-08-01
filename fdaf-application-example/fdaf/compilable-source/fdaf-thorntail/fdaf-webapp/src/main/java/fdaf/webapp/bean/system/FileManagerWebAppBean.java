@@ -28,12 +28,7 @@
  */
 package fdaf.webapp.bean.system;
 
-import fdaf.base.AddAdministratorInterface;
-import fdaf.base.AdministratorAccountCheckerInterface;
-import fdaf.base.CommonConfigurationInterface;
-import fdaf.base.DatabaseServiceCheckerInterface;
 import fdaf.base.FileManagerInterface;
-import fdaf.base.UserSessionManagerInterface;
 import fdaf.base.UserType;
 import fdaf.webapp.base.AbstractBaseWebAppBean;
 import java.io.Serializable;
@@ -55,18 +50,6 @@ import javax.validation.constraints.Size;
 public class FileManagerWebAppBean extends AbstractBaseWebAppBean implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    
-    @EJB(lookup = "java:global/fdaf/AdministratorAccountCheckerFacade")
-    private AdministratorAccountCheckerInterface rootAccountChecker;
-    
-    @EJB(lookup = "java:global/fdaf/UserSessionManagerFacade")
-    private UserSessionManagerInterface userSessionManager;
-    
-    @EJB(lookup = "java:global/fdaf/CommonConfigurationService")
-    private CommonConfigurationInterface commonConfiguration;
-    
-    @EJB(lookup = "java:global/fdaf/DatabaseServiceCheckerFacade")
-    private DatabaseServiceCheckerInterface dbServiceChecker;
     
     @EJB(lookup = "java:global/fdaf/FileManagerUtil")
     private FileManagerInterface fileManagerUtil;
@@ -92,23 +75,6 @@ public class FileManagerWebAppBean extends AbstractBaseWebAppBean implements Ser
     
     protected Controller getController() {
         return controller;
-    }
-    
-    @Override
-    protected DatabaseServiceCheckerInterface getDatabaseServiceChecker() {
-        return dbServiceChecker;
-    }
-
-    protected AdministratorAccountCheckerInterface getAdministratorAccountChecker() {
-        return rootAccountChecker;
-    }
-
-    protected CommonConfigurationInterface getCommonConfiguration() {
-        return commonConfiguration;
-    }
-
-    public UserSessionManagerInterface getUserSessionManager() {
-        return userSessionManager;
     }
     
     public void toHomeDirectory() {
