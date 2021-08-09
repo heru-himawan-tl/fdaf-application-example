@@ -279,6 +279,7 @@ public class FileManagerWebAppBean extends AbstractBaseWebAppBean implements Ser
             }
             if (!nodeNameList.isEmpty()) {
                 for (String nodeName : nodeNameList) {
+                    System.out.println(nodeName);
                     nodeNameMap.remove(nodeName);
                 }
             }

@@ -267,11 +267,7 @@ public class FileManagerWebAppBean extends AbstractBaseWebAppBean implements Ser
                 String[] nodeNames = nodeNameMap.get(nodeName);
                 if (nodeNames != null && nodeNames.length != 0) {
                     try {
-                        //if (!getFacade().isDataExists(nodeName)) {
-                            //partiallyLocated = true;
-                            //continue;
-                        //}
-                        //getFacade().remove(nodeName);
+                        // TODO: node removal here
                         nodeNameList.add(nodeName);
                         getRemoved = true;
                     } catch (Exception e) {
@@ -283,6 +279,7 @@ public class FileManagerWebAppBean extends AbstractBaseWebAppBean implements Ser
             }
             if (!nodeNameList.isEmpty()) {
                 for (String nodeName : nodeNameList) {
+                    System.out.println(nodeName);
                     nodeNameMap.remove(nodeName);
                 }
             }
