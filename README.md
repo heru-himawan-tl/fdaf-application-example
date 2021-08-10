@@ -32,8 +32,8 @@ directory (or a `CATALINA_HOME`) will be alike as:
 #### TomEE Data Source & Transaction Manager Configuration
 
 To make this FDAF application example running correctly under Apache TomEE
-Plume/Plus 8.0.6 (or higher), you must configure a data source and a
-transaction manager for TomEE as shown by the example below:
+Plume/Plus 8.0.6 (or higher), you must configure a data source within
+`CATALINA_HOME/conf/tomee.xml` as shown by the example below:
 
     <?xml version="1.0" encoding="UTF-8"?>
     <tomee>
