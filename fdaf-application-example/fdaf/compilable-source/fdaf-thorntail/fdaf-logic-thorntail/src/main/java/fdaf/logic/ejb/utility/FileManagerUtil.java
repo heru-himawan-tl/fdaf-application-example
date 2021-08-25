@@ -45,6 +45,7 @@ import java.nio.file.DirectoryStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
@@ -141,6 +142,7 @@ public class FileManagerUtil extends ApplicationIdentifier implements Serializab
                 nodeList.add(dirname + File.separator + fileName);
                 if (Files.isDirectory(path)) {
                     recursiveReadDir(dirname + File.separator + fileName, nodeList);
+                    directoryList.add(dirname + File.separator + fileName);
                 }
             }
             directoryStream.close();
@@ -250,7 +252,6 @@ public class FileManagerUtil extends ApplicationIdentifier implements Serializab
                 Map<String, Boolean> data = new HashMap<String, Boolean>();
                 data.put(nodeData[1], true);
                 nodeMap.put(nodeData[0], data);
-                directoryList.add(nodeData[0]);
             }
         }
         if (!localFileMap.isEmpty()) {
@@ -288,6 +289,11 @@ public class FileManagerUtil extends ApplicationIdentifier implements Serializab
     }
     
     public LinkedList<String> getDirectoryList() {
+        recursiveReadDir(baseDirectory, nodeList);
+        nodeList.clear();
+        if (!directoryList.isEmpty()) {
+            Collections.sort(directoryList);
+        }
         return directoryList;
     }
 
@@ -298,11 +304,8 @@ public class FileManagerUtil extends ApplicationIdentifier implements Serializab
     public void upload(List<InputStream> fileStreamList) {
     }
     
-    public boolean move(List<String> fileAddressList, String destinationDirectory) {
-        for (String fileAddress : fileAddressList) {
-            if (!fileAddress.equals(destinationDirectory)) {
-            }
-        }
+    public boolean move(String fileAddress, String destinationDirectory) {
+        
         return true;
     }
     
