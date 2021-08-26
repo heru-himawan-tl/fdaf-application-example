@@ -143,6 +143,10 @@ public class FileManagerWebAppBean extends AbstractBaseWebAppBean implements Ser
         return directoryInfo.getCurrentDirectory();
     }
     
+    public boolean getInHomeDirectory() {
+        return fileManagerUtil.isInHomeDirectory();
+    }
+    
     // ======================================================================
     // Population of directories & files
     // ======================================================================
@@ -424,10 +428,10 @@ public class FileManagerWebAppBean extends AbstractBaseWebAppBean implements Ser
                 String[] nodeNames = nodeNameMap.get(nodeName);
                 if (nodeNames != null && nodeNames.length != 0) {
                     try {
-                        //if (fileManagerUtil.remove(nodeName)) {
+                        if (fileManagerUtil.move(nodeName, massiveMoveDestinationDirectory)) {
                             nodeNameList.add(nodeName);
                             getMoved = true;
-                        //}
+                        }
                     } catch (Exception e) {
                         indicateServiceError(e);
                         partiallyMoved = true;

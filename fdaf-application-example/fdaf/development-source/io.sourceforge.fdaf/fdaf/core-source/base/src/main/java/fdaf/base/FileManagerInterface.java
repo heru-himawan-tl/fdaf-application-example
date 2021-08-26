@@ -37,6 +37,7 @@ import java.util.List;
 public interface FileManagerInterface {
     public boolean createNewDirectory(String name);
     public boolean isError();
+    public boolean isInHomeDirectory();
     public boolean move(String fileAddress, String destinationDirectory);
     public boolean remove(String fileAddress);
     public boolean rename(String oldAddress, String newFileName);

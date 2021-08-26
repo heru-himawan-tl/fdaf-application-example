@@ -84,7 +84,7 @@ USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
                     </h:panelGroup>
                     <h:panelGroup styleClass="dialog_button_box">
                         <h:panelGroup styleClass="dialog_button_box_gap">&nbsp;</h:panelGroup>
-                        <h:commandButton styleClass="grouped_button_left" value="#{label.buttonContinue}" immediate="true" 
+                        <h:commandButton styleClass="grouped_button_left" value="#{label.buttonContinue}" 
                                 rendered="#{(controller.bean.massiveMoveReadyState eq true)}">
                             <f:ajax event="click" execute="@form" render="@form" listener="#{controller.bean.executeMassiveMove}" />
                         </h:commandButton>
@@ -197,16 +197,18 @@ USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
                         <h:panelGroup layout="block" styleClass="file_manager_main_page_container">
                             <d:customProgramHeading pageTitle="#{fn:toUpperCase(label.fileManager)}">
                                 <h:commandButton type="button" styleClass="grouped_button_left" value="#{label.buttonHome}"
-                                    immediate="true" rendered="#{controller.bean.isLoggedOn eq true}">
+                                    immediate="true" rendered="#{controller.bean.isLoggedOn eq true and controller.bean.inHomeDirectory eq false}">
                                     <f:actionListener binding="#{controller.bean.toHomeDirectory()}" />
                                     <f:ajax event="click" execute="@form" render="@form" />
                                 </h:commandButton>
                                 <h:commandButton type="button" styleClass="grouped_button_inner" value="#{label.buttonParentDir}"
-                                    immediate="true" rendered="#{controller.bean.isLoggedOn eq true}">
+                                    immediate="true" rendered="#{controller.bean.isLoggedOn eq true and controller.bean.inHomeDirectory eq false}">
                                     <f:actionListener binding="#{controller.bean.toParentDirectory()}" />
                                     <f:ajax event="click" execute="@form" render="@form" />
                                 </h:commandButton>
-                                <h:commandButton type="button" styleClass="grouped_button_inner" value="#{label.buttonNewDir}"
+                                <h:commandButton type="button" styleClass="#{
+                                        (controller.bean.inHomeDirectory eq true) ? 'grouped_button_left' : 'grouped_button_inner'
+                                    }" value="#{label.buttonNewDir}"
                                     immediate="true" rendered="#{controller.bean.isLoggedOn eq true}">
                                     <f:actionListener binding="#{controller.bean.prepareCreateDirectory()}" />
                                     <f:ajax event="click" execute="@form" render="@form" />

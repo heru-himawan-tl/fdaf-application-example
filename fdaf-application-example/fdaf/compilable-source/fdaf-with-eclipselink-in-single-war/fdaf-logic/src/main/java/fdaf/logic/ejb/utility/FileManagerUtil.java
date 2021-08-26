@@ -68,11 +68,8 @@ public class FileManagerUtil extends ApplicationIdentifier implements Serializab
     @EJB(lookup = "java:global/fdaf-webapp/CommonConfigurationService")
     private CommonConfigurationInterface commonConfiguration;
     
-    private LinkedList<String> nodeList = new LinkedList<String>();
-    
     private LinkedHashMap<String, Map<String, Boolean>> nodeMap = new LinkedHashMap<String, Map<String, Boolean>>();
-    private LinkedList<String> directoryList = new LinkedList<String>();
-    
+
     private boolean error;
     
     private FileListSortMode sortMode = FileListSortMode.BY_NAME;
@@ -134,14 +131,14 @@ public class FileManagerUtil extends ApplicationIdentifier implements Serializab
         return error;
     }
 
-    private void recursiveReadDir(String dirname, LinkedList<String> nodeList) {
+    private void recursiveReadDir(String dirname, LinkedList<String> nodeList, LinkedList<String> directoryList) {
         try {
             DirectoryStream<Path> directoryStream = Files.newDirectoryStream(Paths.get(dirname));
             for (Path path : directoryStream) {
                 String fileName = path.getFileName().toString();
                 nodeList.add(dirname + File.separator + fileName);
                 if (Files.isDirectory(path)) {
-                    recursiveReadDir(dirname + File.separator + fileName, nodeList);
+                    recursiveReadDir(dirname + File.separator + fileName, nodeList, directoryList);
                     directoryList.add(dirname + File.separator + fileName);
                 }
             }
@@ -153,6 +150,10 @@ public class FileManagerUtil extends ApplicationIdentifier implements Serializab
     
     public void toHomeDirectory() {
         currentDirectory = baseDirectory;
+    }
+    
+    public boolean isInHomeDirectory() {
+        return currentDirectory.equals(baseDirectory);
     }
     
     public void toParentDirectory() {
@@ -289,7 +290,12 @@ public class FileManagerUtil extends ApplicationIdentifier implements Serializab
     }
     
     public LinkedList<String> getDirectoryList() {
-        recursiveReadDir(baseDirectory, nodeList);
+        LinkedList<String> directoryList = new LinkedList<String>();
+        LinkedList<String> nodeList = new LinkedList<String>();
+        if (!currentDirectory.equals(baseDirectory)) {
+            directoryList.add(baseDirectory);
+        }
+        recursiveReadDir(baseDirectory, nodeList, directoryList);
         nodeList.clear();
         if (!directoryList.isEmpty()) {
             Collections.sort(directoryList);
@@ -305,7 +311,12 @@ public class FileManagerUtil extends ApplicationIdentifier implements Serializab
     }
     
     public boolean move(String fileAddress, String destinationDirectory) {
-        
+        try {
+            String fileName = (new File(fileAddress)).getName();
+            Files.move(Paths.get(fileAddress), Paths.get(destinationDirectory + File.separator + fileName));
+        } catch (Exception e) {
+            return false;
+        }
         return true;
     }
     
