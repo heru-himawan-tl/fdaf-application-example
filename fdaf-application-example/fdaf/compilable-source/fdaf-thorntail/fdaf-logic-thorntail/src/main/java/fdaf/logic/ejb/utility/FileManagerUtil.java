@@ -35,9 +35,11 @@ import fdaf.base.FileManagerInterface;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.InputStream;
 import java.io.IOException;
+import java.io.OutputStream;
 import java.io.Serializable;
 import java.nio.file.attribute.BasicFileAttributes;
 import java.nio.file.attribute.FileTime;
@@ -112,23 +114,13 @@ public class FileManagerUtil extends ApplicationIdentifier implements Serializab
         }
     }
     
-    public void changeBaseDirectory(String baseDirectory) {
-        Path baseDirPath = Paths.get(baseDirectory);
-        if (!Files.exists(baseDirPath)) {
-            try {
-                Files.createDirectories(baseDirPath);
-                this.baseDirectory = baseDirectory;
-            } catch (Exception e) {
-                error = true;
-            }
-        } else {
-            this.baseDirectory = baseDirectory;
-        }
-    }
-    
     public boolean isError() {
         return error;
     }
+    
+    // ======================================================================
+    // Files & directories population
+    // ======================================================================
 
     private void recursiveReadDir(String dirname, LinkedList<String> nodeList, LinkedList<String> directoryList) {
         try {
@@ -148,23 +140,6 @@ public class FileManagerUtil extends ApplicationIdentifier implements Serializab
             directoryStream.close();
         } catch (Exception e) {
             error = true;
-        }
-    }
-    
-    public void toHomeDirectory() {
-        currentDirectory = baseDirectory;
-    }
-    
-    public boolean isInHomeDirectory() {
-        return currentDirectory.equals(baseDirectory);
-    }
-    
-    public void toParentDirectory() {
-        if (!currentDirectory.equals(baseDirectory)) {
-            try {
-                currentDirectory = (new File(currentDirectory)).getParent();
-            } catch (Exception e) {
-            }
         }
     }
 
@@ -277,6 +252,70 @@ public class FileManagerUtil extends ApplicationIdentifier implements Serializab
         localFilesSortBySize.clear();
     }
     
+    public LinkedHashMap<String, Map<String, Boolean>> getNodeMap() {
+        return nodeMap;
+    }
+    
+    public LinkedList<String> getDirectoryList() {
+        LinkedList<String> directoryList = new LinkedList<String>();
+        if (!currentDirectory.equals(baseDirectory)) {
+            directoryList.add(baseDirectory);
+        }
+        recursiveReadDir(baseDirectory, null, directoryList);
+        if (!directoryList.isEmpty()) {
+            Collections.sort(directoryList);
+        }
+        return directoryList;
+    }
+    
+    public void search(String keywords) {
+        // NOT APPLICABLE YET
+    }
+    
+    public List<String> getSearchResultList() {
+        // NOT APPLICABLE YET
+        return null;
+    }
+    
+    // ======================================================================
+    // Directory locating
+    // ======================================================================
+    
+    public void toParentDirectory() {
+        if (!currentDirectory.equals(baseDirectory)) {
+            try {
+                currentDirectory = (new File(currentDirectory)).getParent();
+            } catch (Exception e) {
+            }
+        }
+    }
+    
+    public void toHomeDirectory() {
+        currentDirectory = baseDirectory;
+    }
+    
+    public boolean isInHomeDirectory() {
+        return currentDirectory.equals(baseDirectory);
+    }
+    
+    public void setBaseDirectory(String baseDirectory) {
+        Path baseDirPath = Paths.get(baseDirectory);
+        if (!Files.exists(baseDirPath)) {
+            try {
+                Files.createDirectories(baseDirPath);
+                this.baseDirectory = baseDirectory;
+            } catch (Exception e) {
+                error = true;
+            }
+        } else {
+            this.baseDirectory = baseDirectory;
+        }
+    }
+    
+    public String getBaseDirectory() {
+        return baseDirectory;
+    }
+    
     public void setCurrentDirectory(String currentDirectory) {
         this.currentDirectory = baseDirectory;
         try {
@@ -293,27 +332,32 @@ public class FileManagerUtil extends ApplicationIdentifier implements Serializab
         return currentDirectory;
     }
     
-    public LinkedHashMap<String, Map<String, Boolean>> getNodeMap() {
-        return nodeMap;
-    }
+    // ======================================================================
+    // Files & directories management
+    // ======================================================================
     
-    public LinkedList<String> getDirectoryList() {
-        LinkedList<String> directoryList = new LinkedList<String>();
-        if (!currentDirectory.equals(baseDirectory)) {
-            directoryList.add(baseDirectory);
+    public int upload(Map<String, InputStream> filesMap) {
+        int uploadCount = 0;
+        for (String address : filesMap.keySet()) {
+            try {
+                InputStream fileStream = filesMap.get(address);
+                if (fileStream != null) {
+                    OutputStream outputStream = new FileOutputStream(address);
+                    byte[] buffer = new byte[1024];
+                    int bytesRead = 0;
+                    while ((bytesRead = fileStream.read(buffer)) != -1) {
+                        outputStream.write(buffer, 0, bytesRead);
+                    }
+                    if (outputStream != null) {
+                        outputStream.close();
+                    }
+                    fileStream.close();
+                    uploadCount++;
+                }
+            } catch (Exception e) {
+            }
         }
-        recursiveReadDir(baseDirectory, null, directoryList);
-        if (!directoryList.isEmpty()) {
-            Collections.sort(directoryList);
-        }
-        return directoryList;
-    }
-
-    public void changeDirectory(String currentDirectory) {
-        this.currentDirectory = currentDirectory;
-    }
-    
-    public void upload(List<InputStream> fileStreamList) {
+        return uploadCount;
     }
     
     public boolean move(String fileAddress, String destinationDirectory) {
@@ -373,15 +417,6 @@ public class FileManagerUtil extends ApplicationIdentifier implements Serializab
             }
         }
         return false;
-    }
-    
-    public void search(String keywords) {
-        // NOT APPLICABLE YET
-    }
-    
-    public List<String> getSearchResultList() {
-        // NOT APPLICABLE YET
-        return null;
     }
     
     public boolean createNewDirectory(String name) {

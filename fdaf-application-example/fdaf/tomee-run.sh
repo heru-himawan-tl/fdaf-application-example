@@ -19,8 +19,7 @@ function run() {
             fi
             sleep 1
         done
-        while [ true ];
-        do
+        while [ true ]; do
             test_run=$(ps aux | awk '/tail .*tomee.*/' | grep 'catalina.out')
             if [ "$test_run" = "" ]; then
                 break
