@@ -37,11 +37,13 @@ USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
         <composite:attribute required="true" name="data" type="java.lang.Object" />
         <composite:attribute required="true" name="classId" type="java.lang.String" />
         <composite:attribute required="true" name="FIclassId" type="java.lang.String" />
+        <composite:attribute required="false" name="buttonLabel" type="java.lang.String" default="BROWSE" />
     </composite:interface>
     <composite:implementation>
         <h:panelGroup layout="block" styleClass="fake_file_input_box">
-            <h:inputText styleClass="#{cc.attrs.classId}" value="#{cc.attrs.data}" onclick="fireInputFile('#{cc.attrs.FIclassId}');" a:autocomplete="off" />
-            <h:commandButton styleClass="grouped_button_right" value="Browse" onclick="fireInputFile('#{cc.attrs.FIclassId}');return false;" />
+            <h:inputText styleClass="fake_file_input #{cc.attrs.classId}" value="#{cc.attrs.data}" onclick="fireInputFile('#{cc.attrs.FIclassId}');" a:autocomplete="off" />
+            <h:commandButton styleClass="grouped_button_right" value="#{cc.attrs.buttonLabel}" onclick="fireInputFile('#{cc.attrs.FIclassId}');return false;" />
+            <composite:insertChildren />
         </h:panelGroup>
     </composite:implementation>
 </html>
