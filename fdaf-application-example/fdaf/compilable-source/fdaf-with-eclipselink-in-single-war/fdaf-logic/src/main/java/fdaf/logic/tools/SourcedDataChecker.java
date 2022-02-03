@@ -33,7 +33,7 @@ public class SourcedDataChecker {
     public SourcedDataChecker() {
     }
 
-    public boolean isSourced(Object primaryKey) {
+    public boolean isSourced(Object primaryKey, Object callbackClass) {
         return false;
     }
 }
