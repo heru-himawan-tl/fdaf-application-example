@@ -26,45 +26,14 @@
  * OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE
  * USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-package fdaf.base;
+package fdaf.logic.tools;
 
-public abstract class ApplicationIdentifier extends FrameworkIdentifier {
+public class SourcedDataChecker {
+    
+    public SourcedDataChecker() {
+    }
 
-    protected static final String USER_SESSION_ID_FIELD_NAME = "FDAF";
-
-    protected ApplicationIdentifier() {
-        // NO-OP
-    }
-    
-    public String getApplicationCodeName() {
-        return "fdaf";
-    }
-    
-    public String getApplicationName() {
-        return "FDAF";
-    }
-    
-    public String getApplicationLongName() {
-        return "FDAF Application Example";
-    }
-    
-    public String getApplicationDescription() {
-        return "An application example shows you how to build efficiently a sample of Java EE application based FDAF framework. This is a quick overview of the most common FDAF starters, along with examples on how to use the FDAF framework API's and abstractions.";
-    }
-    
-    public String getApplicationDevelCopyright() {
-        return "Copyright (C) Heru Himawan Tejo Laksono";
-    }
-    
-    public String getApplicationDevelHomePage() {
-        return "https://github.com/heru-himawan-tl/fdaf-application-example";
-    }
-    
-    public String getApplicationVersion() {
-        return "1.0";
-    }
-    
-    public String getApplicationCompiledDate() {
-        return "2022-02-04 at 01:22:18 WIB";
+    public boolean isSourced(Object primaryKey) {
+        return false;
     }
 }
