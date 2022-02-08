@@ -17,7 +17,7 @@
  *
  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
  * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
- * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSEp
  * ARE DISCLAIMED. IN NO EVENT SHALL THE REGENTS OR CONTRIBUTORS BE LIABLE FOR
  * ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
  * DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
@@ -28,12 +28,35 @@
  */
 package fdaf.logic.ejb.callback.sourced_checkers;
 
-public class DepartmentOnEmployeeSourcedCheck {
+import fdaf.logic.base.SourcedDataCheckerInterface;
+import fdaf.logic.base.Specification;
+import fdaf.logic.ejb.repository.EmployeeRepository;
+import fdaf.logic.entity.Employee;
+import java.io.Serializable;
+import javax.annotation.PostConstruct;
+import javax.ejb.EJB;
+import javax.ejb.Remote;
+import javax.ejb.Stateful;
+
+@Remote({SourcedDataCheckerInterface.class})
+@Stateful(passivationCapable = false)
+public class DepartmentOnEmployeeSourcedCheck implements Serializable {
+
+    private static final long serialVersionUID = 1L;    
+
+    @EJB
+    private EmployeeRepository employeeRepository;
 
     public DepartmentOnEmployeeSourcedCheck() {
+        // NO-OP
     }
     
     public boolean isSourced(Object primaryKey) {
+        Specification<Employee> spec = employeeRepository.presetSpecification();
+        spec.setPredicate(spec.getBuilder().equal(spec.getRoot().get("departmentId"), primaryKey));
+        if (employeeRepository.find(spec) != null) {
+            return true;
+        }
         return false;
     }
 }

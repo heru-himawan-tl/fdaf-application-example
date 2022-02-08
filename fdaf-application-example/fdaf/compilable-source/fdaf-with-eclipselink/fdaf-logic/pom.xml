@@ -143,6 +143,12 @@ USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 <version>2.0.1</version>
 <scope>provided</scope>
 </dependency>
+<dependency>
+<groupId>com.google.guava</groupId>
+<artifactId>guava</artifactId>
+<version>30.1-jre</version>
+<type>jar</type>
+</dependency>
 
     </dependencies>
     

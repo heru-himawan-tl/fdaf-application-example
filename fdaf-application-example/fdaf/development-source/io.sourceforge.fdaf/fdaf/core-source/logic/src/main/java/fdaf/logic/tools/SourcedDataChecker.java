@@ -28,12 +28,42 @@
  */
 package fdaf.logic.tools;
 
+import fdaf.logic.base.SourcedDataCheckerInterface;
+import java.util.HashMap;
+import java.util.Map;
+
 public class SourcedDataChecker {
+
+    protected final Map<String, SourcedDataCheckerInterface> sourceDataCheckerMap = new HashMap<String, SourcedDataCheckerInterface>();
+    protected String callbackPrefixName;
     
     public SourcedDataChecker() {
+        // NO-OP
     }
-
-    public boolean isSourced(Object primaryKey, Object callbackClass) {
+    
+    public void configure(Object callback) {
+        Class<?> enclosingClass = callback.getClass().getEnclosingClass();
+        if (enclosingClass == null) {
+            callbackPrefixName = callback.getClass().getName();
+        } else {
+            callbackPrefixName = enclosingClass.getName();
+        }
+        callbackPrefixName = callbackPrefixName.replaceAll("^.*\\.|UpdateCallback$", "");
+    }
+    
+    protected void mapSourcedDataCheckers() {
+        // NO-OP
+    }
+    
+    public boolean isSourced(Object primaryKey) {
+        if (!sourceDataCheckerMap.isEmpty()) {
+            for (String key: sourceDataCheckerMap.keySet()) {
+                SourcedDataCheckerInterface sdc = sourceDataCheckerMap.get(key);
+                if (sdc.isSourced(primaryKey)) {
+                    return true;
+                }
+            }
+        }
         return false;
-    }
+    } 
 }
