@@ -8,7 +8,7 @@ on how to use the FDAF framework API's and abstractions.
 This FDAF application example has tested under these application servers:
 
 - [WildFly V. 24 Final](https://www.wildfly.org/)   
-- [Apache Tomee Plume V. 8.0.6](https://tomee.apache.org/)  
+- [Apache Tomee Plume V. 8.0.9](https://tomee.apache.org/)  
 
 Notice:  
 Due [Apache Tomee Plus](https://tomee.apache.org/) applies OpenJPA
