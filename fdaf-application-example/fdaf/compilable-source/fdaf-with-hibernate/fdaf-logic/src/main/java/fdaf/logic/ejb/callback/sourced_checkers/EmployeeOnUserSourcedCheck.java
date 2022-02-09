@@ -17,7 +17,7 @@
  *
  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
  * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
- * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSEp
  * ARE DISCLAIMED. IN NO EVENT SHALL THE REGENTS OR CONTRIBUTORS BE LIABLE FOR
  * ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
  * DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
@@ -26,47 +26,36 @@
  * OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE
  * USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-package fdaf.logic.callback.sourced_checker_wrapper;
+package fdaf.logic.ejb.callback.sourced_checkers;
 
-import fdaf.logic.tools.SourcedDataChecker;
 import fdaf.logic.base.SourcedDataCheckerInterface;
+import fdaf.logic.base.Specification;
+import fdaf.logic.ejb.repository.UserRepository;
+import fdaf.logic.entity.User;
 import java.io.Serializable;
-import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.ejb.Remote;
 import javax.ejb.Stateful;
 
+@Remote({SourcedDataCheckerInterface.class})
 @Stateful(passivationCapable = false)
-public class SourcedDataCheckWrapper extends SourcedDataChecker implements Serializable {
+public class EmployeeOnUserSourcedCheck implements Serializable {
 
-    private static final long serialVersionUID = 1L;
-    
-    @EJB(lookup = "java:global/fdaf/DepartmentOnEmployeeSourcedCheck")
-    SourcedDataCheckerInterface sdc1;
-    @EJB(lookup = "java:global/fdaf/EmployeeOnUserSourcedCheck")
-    SourcedDataCheckerInterface sdc2;
-    @EJB(lookup = "java:global/fdaf/RoleOnEmployeeSourcedCheck")
-    SourcedDataCheckerInterface sdc3;
-    @EJB(lookup = "java:global/fdaf/UserGroupOnUserGroupMemberSourcedCheck")
-    SourcedDataCheckerInterface sdc4;
-    @EJB(lookup = "java:global/fdaf/UserOnUserGroupMemberSourcedCheck")
-    SourcedDataCheckerInterface sdc5;
-    
-    public SourcedDataCheckWrapper() {
+    private static final long serialVersionUID = 1L;    
+
+    @EJB
+    private UserRepository userRepository;
+
+    public EmployeeOnUserSourcedCheck() {
+        // NO-OP
     }
     
-    @Override
-    protected void mapSourcedDataCheckers() {
-        sourceDataCheckerMap.put("DepartmentOnEmployeeSourcedCheck", sdc1);
-        sourceDataCheckerMap.put("EmployeeOnUserSourcedCheck", sdc2);
-        sourceDataCheckerMap.put("RoleOnEmployeeSourcedCheck", sdc3);
-        sourceDataCheckerMap.put("UserGroupOnUserGroupMemberSourcedCheck", sdc4);
-        sourceDataCheckerMap.put("UserOnUserGroupMemberSourcedCheck", sdc5);
+    public boolean isSourced(Object primaryKey) {
+        Specification<User> spec = userRepository.presetSpecification();
+        spec.setPredicate(spec.getBuilder().equal(spec.getRoot().get("employeeId"), primaryKey));
+        if (userRepository.find(spec) != null) {
+            return true;
+        }
+        return false;
     }
-    
-    @Override
-    public void configure(Object callback) {
-        super.configure(callback);
-        mapSourcedDataCheckers();
-    }   
 }

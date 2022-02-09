@@ -43,8 +43,14 @@ public class SourcedDataCheckWrapper extends SourcedDataChecker implements Seria
     
     @EJB(lookup = "java:global/fdaf-webapp/DepartmentOnEmployeeSourcedCheck")
     SourcedDataCheckerInterface sdc1;
-    @EJB(lookup = "java:global/fdaf-webapp/RoleOnEmployeeSourcedCheck")
+    @EJB(lookup = "java:global/fdaf-webapp/EmployeeOnUserSourcedCheck")
     SourcedDataCheckerInterface sdc2;
+    @EJB(lookup = "java:global/fdaf-webapp/RoleOnEmployeeSourcedCheck")
+    SourcedDataCheckerInterface sdc3;
+    @EJB(lookup = "java:global/fdaf-webapp/UserGroupOnUserGroupMemberSourcedCheck")
+    SourcedDataCheckerInterface sdc4;
+    @EJB(lookup = "java:global/fdaf-webapp/UserOnUserGroupMemberSourcedCheck")
+    SourcedDataCheckerInterface sdc5;
     
     public SourcedDataCheckWrapper() {
     }
@@ -52,7 +58,10 @@ public class SourcedDataCheckWrapper extends SourcedDataChecker implements Seria
     @Override
     protected void mapSourcedDataCheckers() {
         sourceDataCheckerMap.put("DepartmentOnEmployeeSourcedCheck", sdc1);
-        sourceDataCheckerMap.put("RoleOnEmployeeSourcedCheck", sdc2);
+        sourceDataCheckerMap.put("EmployeeOnUserSourcedCheck", sdc2);
+        sourceDataCheckerMap.put("RoleOnEmployeeSourcedCheck", sdc3);
+        sourceDataCheckerMap.put("UserGroupOnUserGroupMemberSourcedCheck", sdc4);
+        sourceDataCheckerMap.put("UserOnUserGroupMemberSourcedCheck", sdc5);
     }
     
     @Override
