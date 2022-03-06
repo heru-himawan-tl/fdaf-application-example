@@ -26,45 +26,60 @@
  * OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE
  * USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-package fdaf.base;
+package fdaf.webapp.bean.common;
 
-public abstract class ApplicationIdentifier extends FrameworkIdentifier {
+import fdaf.base.FacadeInterface;
+import fdaf.webapp.base.AbstractWebAppBean;
+import fdaf.webapp.bean.system.Controller;
+import fdaf.webapp.bean.system.EditIndexingBean;
+import fdaf.webapp.bean.system.ListUpdaterBean;
+import java.io.Serializable;
+import javax.ejb.EJB;
+import javax.faces.view.ViewScoped;
+import javax.inject.Inject;
+import javax.inject.Named;
 
-    protected static final String USER_SESSION_ID_FIELD_NAME = "FDAF";
+@ViewScoped
+@Named
+public class UserLoginWebAppBean extends AbstractWebAppBean implements Serializable {
 
-    protected ApplicationIdentifier() {
+    private static final long serialVersionUID = 1L;
+
+    @EJB(lookup = "java:global/fdaf/UserLoginFacade")
+    private FacadeInterface facade;
+    
+    @Inject
+    private EditIndexingBean editIndexing;
+    
+    // UI_UPDATER_INJECT_HERE
+    
+    @Inject
+    private ListUpdaterBean listUpdater;
+    
+    @Inject
+    private Controller controller;
+
+    public UserLoginWebAppBean() {
         // NO-OP
     }
     
-    public String getApplicationCodeName() {
-        return "fdaf";
+    protected Controller getController() {
+        return controller;
     }
     
-    public String getApplicationName() {
-        return "FDAF";
+    @Override
+    public EditIndexingBean getEditIndexing() {
+        return editIndexing;
     }
     
-    public String getApplicationLongName() {
-        return "FDAF Application Example";
+    @Override
+    public ListUpdaterBean getListUpdater() {
+        return listUpdater;
+    }
+
+    protected FacadeInterface getFacade() {
+        return facade;
     }
     
-    public String getApplicationDescription() {
-        return "An application example shows you how to build efficiently a sample of Java EE application based FDAF framework. This is a quick overview of the most common FDAF starters, along with examples on how to use the FDAF framework API's and abstractions.";
-    }
-    
-    public String getApplicationDevelCopyright() {
-        return "Copyright (C) Heru Himawan Tejo Laksono";
-    }
-    
-    public String getApplicationDevelHomePage() {
-        return "https://github.com/heru-himawan-tl/fdaf-application-example";
-    }
-    
-    public String getApplicationVersion() {
-        return "1.0";
-    }
-    
-    public String getApplicationCompiledDate() {
-        return "2022-03-07 at 06:57:14 WIB";
-    }
+    // UI_UPDATER_ARRAY_GET_METHOD_HERE
 }
