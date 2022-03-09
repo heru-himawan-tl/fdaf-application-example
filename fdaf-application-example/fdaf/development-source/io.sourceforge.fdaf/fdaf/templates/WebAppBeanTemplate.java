@@ -33,6 +33,7 @@ import fdaf.webapp.base.AbstractWebAppBean;
 import fdaf.webapp.bean.system.Controller;
 import fdaf.webapp.bean.system.EditIndexingBean;
 import fdaf.webapp.bean.system.ListUpdaterBean;
+import fdaf.webapp.bean.system.WebSessionHandleBean;
 import java.io.Serializable;
 import javax.ejb.EJB;
 import javax.faces.view.ViewScoped;
@@ -47,6 +48,9 @@ public class __NAME__WebAppBean extends AbstractWebAppBean implements Serializab
 
     @EJB(lookup = "java:global/__EJB_LOOKUP_DIR__/__NAME__Facade")
     private FacadeInterface facade;
+    
+    @Inject
+    private WebSessionHandleBean webSessionHandle;
     
     @Inject
     private EditIndexingBean editIndexing;
@@ -65,6 +69,11 @@ public class __NAME__WebAppBean extends AbstractWebAppBean implements Serializab
     
     protected Controller getController() {
         return controller;
+    }
+    
+    @Override
+    public WebSessionHandleBean getWebSessionHandleBean() {
+        return webSessionHandle;
     }
     
     @Override
