@@ -43,6 +43,8 @@ public class EditIndexingWS extends AbstractWebSocket {
     private Object dataID;
     private String webSessionUUID;
     
+    private String messageFormat = "^([a-zA-Z0-9\\-]+)([ ]+)([a-zA-Z\\-\\_]+)([ ]+)([0-9]+)([ ]+)([a-zA-Z0-9\\-]+)$";
+    
     public String getViewLayerName() {
         return viewLayerName;
     }
@@ -64,11 +66,11 @@ public class EditIndexingWS extends AbstractWebSocket {
     @Override
     protected void onMessageTask(String message) {
         if (message != null && !message.trim().isEmpty()) {
-            String serviceUUID = message.replaceAll("^([a-zA-Z0-9\\-]+)([ ]+)([a-zA-Z]+)([ ]+)([0-9]+)([ ]+)([a-zA-Z0-9\\-]+)$", "$1");
+            String serviceUUID = message.replaceAll(messageFormat, "$1");
             if (serviceUUID.equals(editIndexing.getServiceUUID())) {
-                viewLayerName = message.replaceAll("^([a-zA-Z0-9\\-]+)([ ]+)([a-zA-Z]+)([ ]+)([0-9]+)([ ]+)([a-zA-Z0-9\\-]+)$", "$3");
-                dataID = (Object) Long.parseLong(message.replaceAll("^([a-zA-Z0-9\\-]+)([ ]+)([a-zA-Z]+)([ ]+)([0-9]+)([ ]+)([a-zA-Z0-9\\-]+)$", "$5"));
-                webSessionUUID = message.replaceAll("^([a-zA-Z0-9\\-]+)([ ]+)([a-zA-Z]+)([ ]+)([0-9]+)([ ]+)([a-zA-Z0-9\\-]+)$", "$7");
+                dataID = (Object) Long.parseLong(message.replaceAll(messageFormat, "$5"));
+                webSessionUUID = message.replaceAll(messageFormat, "$7");
+                viewLayerName = message.replaceAll(messageFormat, "$3");
             }
         }
     }
