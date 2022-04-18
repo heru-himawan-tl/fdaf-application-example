@@ -46,5 +46,6 @@ public interface UpdateCallbackInterface<R extends AbstractRepository<E>, E> {
     public void setCustomMessage(String customMessage);
     public void setEntity(E entity);
     public void setMessage(String message);
+    public void setParameterObject(Object parameterObject);
     public void setRepository(R repository);
 }

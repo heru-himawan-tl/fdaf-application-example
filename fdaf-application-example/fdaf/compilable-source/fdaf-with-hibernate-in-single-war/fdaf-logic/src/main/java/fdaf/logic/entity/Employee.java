@@ -29,27 +29,28 @@
 package fdaf.logic.entity;
 
 import fdaf.base.Gender;
-import org.hibernate.annotations.NotFoundAction;
-import org.hibernate.annotations.NotFound;
-import javax.validation.constraints.Max;
-import javax.validation.constraints.Min;
-import javax.validation.constraints.Positive;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Size;
-import javax.validation.constraints.Pattern;
-import javax.persistence.OneToOne;
-import javax.persistence.JoinColumn;
-import javax.persistence.Entity;
-import javax.persistence.Column;
-import javax.persistence.Table;
-import javax.persistence.Enumerated;
-import javax.persistence.EnumType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import fdaf.base.Permission;
 
 import java.io.Serializable;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Enumerated;
+import javax.persistence.EnumType;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+import javax.persistence.Transient;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Positive;
+import javax.validation.constraints.Size;
+import org.hibernate.annotations.NotFound;
+import org.hibernate.annotations.NotFoundAction;
 
 @Table(name = "employee")
 @Entity
@@ -73,6 +74,11 @@ public class Employee implements Serializable {
     @NotBlank(message = "{employee.lastName.invalid.NotBlank}")
     @Column(name = "last_name")
     private String lastName;
+    
+    private String picture;
+    
+    @Transient
+    private String pictureTemporary;
     
     @Max(value = 31, message = "{employee.dobDay.invalid.Max}")
     @Min(value = 1, message = "{employee.dobDay.invalid.Min}")
@@ -148,6 +154,8 @@ public class Employee implements Serializable {
     public Employee(String firstName,
             String middleName,
             String lastName,
+            String picture,
+            String pictureTemporary,
             Integer dobDay,
             Integer dobMonth,
             Integer dobYear,
@@ -170,6 +178,8 @@ public class Employee implements Serializable {
         this.firstName = firstName;
         this.middleName = middleName;
         this.lastName = lastName;
+        this.picture = picture;
+        this.pictureTemporary = pictureTemporary;
         this.dobDay = dobDay;
         this.dobMonth = dobMonth;
         this.dobYear = dobYear;
@@ -223,6 +233,22 @@ public class Employee implements Serializable {
 
     public String getLastName() {
         return lastName;
+    }
+
+    public void setPicture(String picture) {
+        this.picture = picture;
+    }
+
+    public String getPicture() {
+        return picture;
+    }
+
+    public void setPictureTemporary(String pictureTemporary) {
+        this.pictureTemporary = pictureTemporary;
+    }
+
+    public String getPictureTemporary() {
+        return pictureTemporary;
     }
 
     public void setDobDay(Integer dobDay) {
@@ -420,6 +446,8 @@ public class Employee implements Serializable {
             + "[firstName=" + firstName + "]\n"
             + "[middleName=" + middleName + "]\n"
             + "[lastName=" + lastName + "]\n"
+            + "[picture=" + picture + "]\n"
+            + "[pictureTemporary=" + pictureTemporary + "]\n"
             + "[dobDay=" + dobDay + "]\n"
             + "[dobMonth=" + dobMonth + "]\n"
             + "[dobYear=" + dobYear + "]\n"

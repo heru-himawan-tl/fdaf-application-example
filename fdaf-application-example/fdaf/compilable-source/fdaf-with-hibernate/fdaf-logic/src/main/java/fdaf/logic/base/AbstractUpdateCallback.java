@@ -35,6 +35,7 @@ public abstract class AbstractUpdateCallback {
 
     protected String customMessage;
     protected String message;
+    protected Object parameterObject;
 
     protected AbstractUpdateCallback() {
         // NO-OP
@@ -110,5 +111,9 @@ public abstract class AbstractUpdateCallback {
         String backup = message;
         message = null;
         return backup;
-    } 
+    }
+    
+    public void setParameterObject(Object parameterObject) {
+        this.parameterObject = parameterObject;
+    }
 }

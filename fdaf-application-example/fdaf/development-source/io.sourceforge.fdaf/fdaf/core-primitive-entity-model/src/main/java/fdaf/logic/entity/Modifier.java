@@ -28,14 +28,14 @@
  */
 package fdaf.logic.entity;
 
-import org.hibernate.annotations.NotFoundAction;
-import org.hibernate.annotations.NotFound;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
+import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
-import java.io.Serializable;
+import org.hibernate.annotations.NotFound;
+import org.hibernate.annotations.NotFoundAction;
 
 // WITHOUT_DATA_PROPERTY
 // NO_WEB_APP_BEAN_GEN
@@ -43,9 +43,12 @@ import java.io.Serializable;
 @Table(name = "modifier")
 @Entity
 public class Modifier implements Serializable {
+
     private static final long serialVersionUID = 1L;
+    
     @Column(name = "user_id")
     private Long userId;
+    
     @NotFound(action = NotFoundAction.IGNORE)
     @OneToOne
     @JoinColumn(name = "user_id", insertable = false, updatable = false)

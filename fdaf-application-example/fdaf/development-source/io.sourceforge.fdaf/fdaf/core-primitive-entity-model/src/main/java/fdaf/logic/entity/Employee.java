@@ -34,22 +34,23 @@
 package fdaf.logic.entity;
 
 import fdaf.base.Gender;
-import org.hibernate.annotations.NotFoundAction;
-import org.hibernate.annotations.NotFound;
-import javax.validation.constraints.Max;
-import javax.validation.constraints.Min;
-import javax.validation.constraints.Positive;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Size;
-import javax.validation.constraints.Pattern;
-import javax.persistence.OneToOne;
-import javax.persistence.JoinColumn;
-import javax.persistence.Entity;
+import java.io.Serializable;
 import javax.persistence.Column;
-import javax.persistence.Table;
+import javax.persistence.Entity;
 import javax.persistence.Enumerated;
 import javax.persistence.EnumType;
-import java.io.Serializable;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+import javax.persistence.Transient;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Positive;
+import javax.validation.constraints.Size;
+import org.hibernate.annotations.NotFound;
+import org.hibernate.annotations.NotFoundAction;
 
 @Table(name = "employee")
 @Entity
@@ -70,6 +71,11 @@ public class Employee implements Serializable {
     @NotBlank(message = "Last name not specified.")
     @Column(name = "last_name")
     private String lastName;
+    
+    private String picture;
+    
+    @Transient
+    private String pictureTemporary;
     
     @Max(value = 31, message = "D.O.B day must be smaller than 32.")
     @Min(value = 1, message = "D.O.B day must be greater than 0.")

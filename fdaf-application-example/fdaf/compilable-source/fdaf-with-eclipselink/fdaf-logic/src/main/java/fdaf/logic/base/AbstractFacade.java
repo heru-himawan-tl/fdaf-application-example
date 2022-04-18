@@ -51,6 +51,8 @@ public abstract class AbstractFacade<R extends AbstractRepository<E>, E extends 
     protected Long modifierId;
     protected String recordDate = "";
     protected String uuid;
+    
+    protected Object parameterObject;
 
     protected AbstractFacade(Class<E> entityClass) {
         this.entityClass = entityClass;
@@ -81,6 +83,7 @@ public abstract class AbstractFacade<R extends AbstractRepository<E>, E extends 
         updateCallback = new UpdateCallbackInterface<R, E>() {
             private String customMessage;
             private String message;
+            private Object parameterObject;
             private E entity;
             public void setRepository(R repository) {
             }
@@ -135,6 +138,9 @@ public abstract class AbstractFacade<R extends AbstractRepository<E>, E extends 
             public String getCustomMessage() {
                 return customMessage;
             }
+            public void setParameterObject(Object parameterObject) {
+                this.parameterObject = parameterObject;
+            }
         };
     }
 
@@ -156,6 +162,14 @@ public abstract class AbstractFacade<R extends AbstractRepository<E>, E extends 
 
     protected void updateDataProperties(boolean updateMode) {
         // NO-OP
+    }
+    
+    public void setParameterObject(Object parameterObject) {
+        this.parameterObject = parameterObject;
+    }
+    
+    public void transferParameterObject() {
+        updateCallback.setParameterObject(parameterObject);
     }
 
     protected void updateRecordDate() {

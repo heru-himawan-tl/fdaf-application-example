@@ -65,7 +65,9 @@ public interface FacadeInterface {
     public void setAuthorId(Long authorId);
     public void setEntity(Object entity);
     public void setModifierId(Long modifierId);
+    public void setParameterObject(Object parameterObject);
     public void setUserGroupId(Long userGroupId);
     public void takeover();
+    public void transferParameterObject();
     public void update();
 }

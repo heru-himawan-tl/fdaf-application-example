@@ -72,11 +72,23 @@ public class DepartmentUpdateCallback extends AbstractUpdateCallback
     public Department getEntity() {
         return entity;
     }
+    
+    public void onPrepareUpdateTask() {
+        entity.setPictureTemporary(entity.getPicture());
+    }
+    
+    private void savePicture() {
+        entity.setPicture(entity.getPictureTemporary());
+    }
+    
+    public void onReloadEntityTask() {
+    }
 
     public boolean preCreateCheck() {
         Specification<Department> spec = repository.presetSpecification();
         spec.setPredicate(spec.getBuilder().equal(spec.getRoot().get("name"), entity.getName()));
         if (repository.find(spec) == null) {
+            savePicture();
             return true;
         }
         setMessage("newDepartmentDuplicated");
@@ -89,6 +101,7 @@ public class DepartmentUpdateCallback extends AbstractUpdateCallback
             spec.getBuilder().notEqual(spec.getRoot().get("uuid"), entity.getUuid()),
             spec.getBuilder().equal(spec.getRoot().get("name"), entity.getName())));
         if (repository.find(spec) == null) {
+            savePicture();
             return true;
         }
         setMessage("updateDepartmentDuplicated");

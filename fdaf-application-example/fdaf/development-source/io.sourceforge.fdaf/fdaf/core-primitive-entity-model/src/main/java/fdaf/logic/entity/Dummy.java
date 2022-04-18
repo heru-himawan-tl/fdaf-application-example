@@ -28,14 +28,9 @@
  */
 package fdaf.logic.entity;
 
-import org.hibernate.annotations.NotFoundAction;
-import org.hibernate.annotations.NotFound;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
-import javax.persistence.Column;
+import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.Table;
-import java.io.Serializable;
 
 // WITHOUT_DATA_PROPERTY
 // NO_WEB_APP_BEAN_GEN
@@ -43,6 +38,7 @@ import java.io.Serializable;
 @Table(name = "dummy")
 @Entity
 public class Dummy implements Serializable {
+
     private static final long serialVersionUID = 1L;
 
     // ENTITY_BODY

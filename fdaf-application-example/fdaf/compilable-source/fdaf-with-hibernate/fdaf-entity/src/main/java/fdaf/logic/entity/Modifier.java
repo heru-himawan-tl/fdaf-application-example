@@ -28,13 +28,6 @@
  */
 package fdaf.logic.entity;
 
-import org.hibernate.annotations.NotFoundAction;
-import org.hibernate.annotations.NotFound;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Enumerated;
@@ -43,16 +36,26 @@ import javax.persistence.Id;
 import fdaf.base.Permission;
 
 import java.io.Serializable;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+import org.hibernate.annotations.NotFound;
+import org.hibernate.annotations.NotFoundAction;
 
 @Table(name = "modifier")
 @Entity
 public class Modifier implements Serializable {
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    
     @Column(name = "user_id")
     private Long userId;
+    
     @NotFound(action = NotFoundAction.IGNORE)
     @OneToOne
     @JoinColumn(name = "user_id", insertable = false, updatable = false)

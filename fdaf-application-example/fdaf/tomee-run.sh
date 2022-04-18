@@ -45,11 +45,11 @@ CWD=$(pwd)
 BASE=$(basename $CWD)
 
 if [ "$1" = "--compile-test-multi-packs" ]; then 
-    if ./compile-test.sh with-eclipselink --tomee-test-multi-packs; then
+    if ./compile-test.sh --port=with-eclipselink --tomee-test-multi-packs; then
         run    
     fi
 elif [ "$1" = "--compile-test-single-pack" ]; then 
-    if ./compile-test.sh with-eclipselink-in-single-war --tomee-test-single-pack; then
+    if ./compile-test.sh --port=with-eclipselink-in-single-war --tomee-test-single-pack; then
         run    
     fi
 elif [ "$1" = "--multi-packs" ]; then

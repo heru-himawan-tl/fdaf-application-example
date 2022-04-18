@@ -112,9 +112,9 @@ option.
 
 To test this FDAF application example under WildFly, the development-source
 can be pre-compiled by the call of `compile-test.sh` script with argument
-`with-hibernate`:
+`--port=with-hibernate`:
 
-    ./compile-test.sh with-hibernate
+    ./compile-test.sh --port=with-hibernate
     
 The compilation will yield the following items:
 
@@ -138,7 +138,7 @@ Another choice, by the call of `compile-test.sh` script with argument
 `with-hibernate-in-single-war`, to yield single WAR application with business
 logic package (`fdaf-logic.jar`) packaged in `WEB-INF/lib`:
 
-    ./compile-test.sh with-hibernate-in-single-war
+    ./compile-test.sh --port=with-hibernate-in-single-war
 
 The single WAR compilation will yield the following items:
 

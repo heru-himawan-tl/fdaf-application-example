@@ -15,6 +15,7 @@ CREATE TABLE IF NOT EXISTS `employee` (
     `first_name` LONGTEXT,
     `middle_name` LONGTEXT,
     `last_name` LONGTEXT,
+    `picture` LONGTEXT,
     `dob_day` INT,
     `dob_month` INT,
     `dob_year` INT,
@@ -31,16 +32,19 @@ CREATE TABLE IF NOT EXISTS `employee` (
 
 CREATE TABLE IF NOT EXISTS `department` (
     `name` LONGTEXT,
+    `picture` LONGTEXT,
     `description` TEXT,
 );
 
 CREATE TABLE IF NOT EXISTS `role` (
     `name` LONGTEXT,
+    `picture` LONGTEXT,
     `description` TEXT,
 );
 
 CREATE TABLE IF NOT EXISTS `user_group` (
     `name` LONGTEXT,
+    `picture` LONGTEXT,
     `description` TEXT,
 );
 

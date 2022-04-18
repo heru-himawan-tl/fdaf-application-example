@@ -28,21 +28,30 @@
  */
 package fdaf.logic.entity;
 
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Size;
-import javax.validation.constraints.Pattern;
+import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.Table;
-import java.io.Serializable;
+import javax.persistence.Transient;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 
 @Table(name = "user_group")
 @Entity
 public class UserGroup implements Serializable {
+
     private static final long serialVersionUID = 1L;
+
     @Pattern(regexp = "^[a-zA-Z0-9\\-\\(\\)\\/ ]+$", message = "Invalid format for group name.")
     @Size(min = 2, max = 128, message = "Group name length out of range (min = 2, max = 128).")
     @NotBlank(message = "Group name not specified.")
     private String name;
+
+    private String picture;
+    
+    @Transient
+    private String pictureTemporary;
+
     private String description;
 
     // ENTITY_BODY

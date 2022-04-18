@@ -28,12 +28,6 @@
  */
 package fdaf.logic.entity;
 
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
-
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Enumerated;
@@ -42,6 +36,11 @@ import javax.persistence.Id;
 import fdaf.base.Permission;
 
 import java.io.Serializable;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
 
 @Table(name = "user_group_member")
 @Entity

@@ -28,24 +28,19 @@
  */
 package fdaf.logic.entity;
 
-import org.hibernate.annotations.NotFoundAction;
-import org.hibernate.annotations.NotFound;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Size;
-import javax.validation.constraints.Pattern;
-import javax.persistence.OneToOne;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
-import javax.persistence.Column;
+import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.Table;
-import java.io.Serializable;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 
 // NO_WEB_APP_BEAN_GEN
 
 @Table(name = "staff_invitation")
 @Entity
 public class StaffInvitation implements Serializable {
+
     private static final long serialVersionUID = 1L;
     
     @Pattern(regexp = "^[a-zA-Z0-9\\-\\.]+@[a-zA-Z0-9\\-\\.]+$", message = "Invalid format of e-mail address.")

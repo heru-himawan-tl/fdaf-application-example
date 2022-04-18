@@ -28,11 +28,6 @@
  */
 package fdaf.logic.entity;
 
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Size;
-import javax.validation.constraints.Pattern;
-import javax.persistence.Entity;
-import javax.persistence.Table;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import org.hibernate.annotations.NotFoundAction;
@@ -46,18 +41,32 @@ import javax.persistence.Id;
 import fdaf.base.Permission;
 
 import java.io.Serializable;
+import javax.persistence.Entity;
+import javax.persistence.Table;
+import javax.persistence.Transient;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 
 @Table(name = "role")
 @Entity
 public class Role implements Serializable {
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    
     @Pattern(regexp = "^[a-zA-Z0-9\\-\\(\\)\\/ ]+$", message = "{role.name.invalid.Pattern}")
     @Size(min = 2, max = 128, message = "{role.name.invalid.Size}")
     @NotBlank(message = "{role.name.invalid.NotBlank}")
     private String name;
+    
+    private String picture;
+    
+    @Transient
+    private String pictureTemporary;
+
     private String description;    
     private String uuid;
     @Column(name = "author_id", nullable = true)
@@ -86,6 +95,8 @@ public class Role implements Serializable {
     private Modifier modifier;
 
     public Role(String name,
+            String picture,
+            String pictureTemporary,
             String description,
             Long authorId,
             Long modifierId,
@@ -95,6 +106,8 @@ public class Role implements Serializable {
             Permission permission,
             String uuid) {
         this.name = name;
+        this.picture = picture;
+        this.pictureTemporary = pictureTemporary;
         this.description = description;
         this.authorId = authorId;
         this.userGroupId = userGroupId;
@@ -121,6 +134,22 @@ public class Role implements Serializable {
 
     public String getName() {
         return name;
+    }
+
+    public void setPicture(String picture) {
+        this.picture = picture;
+    }
+
+    public String getPicture() {
+        return picture;
+    }
+
+    public void setPictureTemporary(String pictureTemporary) {
+        this.pictureTemporary = pictureTemporary;
+    }
+
+    public String getPictureTemporary() {
+        return pictureTemporary;
     }
 
     public void setDescription(String description) {
@@ -212,6 +241,8 @@ public class Role implements Serializable {
         return getClass().getName()
             + "[id=" + id + "]\n"
             + "[name=" + name + "]\n"
+            + "[picture=" + picture + "]\n"
+            + "[pictureTemporary=" + pictureTemporary + "]\n"
             + "[description=" + description + "]\n"
             + "[authorId=" + authorId + "]\n"
             + "[modifierId=" + modifierId + "]\n"
